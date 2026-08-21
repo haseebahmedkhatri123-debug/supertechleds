@@ -204,6 +204,311 @@ html, body, .page-wrapper, .section, .container, ._2-column-container {
 </div>
 </div>
 </div></section></div>
+<!-- RELATED PRODUCTS CAROUSEL SECTION -->
+<style>
+#related-products-section {
+  padding: 80px 0;
+  background-color: #f7f9fc;
+  font-family: "Mulish", Arial, sans-serif;
+  overflow: hidden;
+}
+
+#related-products-section .container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+#related-products-section .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+#related-products-section .section-title {
+  font-family: "Mulish", Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #14142b;
+  margin: 0;
+}
+
+#related-products-section .filter-tabs {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+#related-products-section .filter-tab {
+  font-size: 14px;
+  font-weight: 700;
+  color: #7e84a3;
+  cursor: pointer;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+#related-products-section .filter-tab.active,
+#related-products-section .filter-tab:hover {
+  color: #14142b;
+  border-bottom-color: #14142b;
+}
+
+#related-products-section .rel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 6px 4px 16px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#related-products-section .rel-track::-webkit-scrollbar {
+  display: none;
+}
+
+#related-products-section .rel-card {
+  flex: 0 0 calc((100% - 80px) / 5);
+  min-width: calc((100% - 80px) / 5);
+  max-width: calc((100% - 80px) / 5);
+  scroll-snap-align: start;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid #eaecef;
+  box-shadow: 0 4px 16px rgba(20, 20, 43, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+}
+
+#related-products-section .rel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(20, 20, 43, 0.08);
+  border-color: #1fa35b;
+}
+
+#related-products-section .rel-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  background: #1fa35b;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  line-height: 1;
+}
+
+#related-products-section .rel-image-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #fafbfc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  box-sizing: border-box;
+  margin-bottom: 14px;
+}
+
+#related-products-section .rel-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.35s ease;
+}
+
+#related-products-section .rel-card:hover .rel-image {
+  transform: scale(1.06);
+}
+
+#related-products-section .rel-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #14142b;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#related-products-section .bottom-nav-bar {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+#related-products-section .progress-line-track {
+  flex: 1;
+  height: 2px;
+  background: #14142b;
+  border-radius: 2px;
+  position: relative;
+}
+
+#related-products-section .rel-arrows {
+  display: flex;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+#related-products-section .rel-arrow {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #e2e5ed;
+  background: #ffffff;
+  color: #14142b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+#related-products-section .rel-arrow:hover {
+  background: #14142b;
+  color: #ffffff;
+  border-color: #14142b;
+  transform: translateY(-2px);
+}
+
+#related-products-section .rel-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media screen and (max-width: 1200px) {
+  #related-products-section .rel-card {
+    flex-basis: calc((100% - 60px) / 4);
+    min-width: calc((100% - 60px) / 4);
+    max-width: calc((100% - 60px) / 4);
+  }
+}
+
+@media screen and (max-width: 991px) {
+  #related-products-section .rel-card {
+    flex-basis: calc((100% - 40px) / 3);
+    min-width: calc((100% - 40px) / 3);
+    max-width: calc((100% - 40px) / 3);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #related-products-section .rel-card {
+    flex-basis: 65vw;
+    min-width: 65vw;
+    max-width: 65vw;
+  }
+}
+</style>
+
+<section id="related-products-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Related Products</h2>
+      <div class="filter-tabs">
+        <span class="filter-tab active">Trending Now</span>
+        <span class="filter-tab">New Arrivals</span>
+      </div>
+    </div>
+
+    <div class="rel-track" id="rel-products-track">
+      <!-- Card 1 -->
+      <a href="product/bluetooth-speaker.html" class="rel-card">
+        <span class="rel-badge">New</span>
+        <div class="rel-image-box">
+          <img src="assets/images/661433876180b56f03c2bd9c_speaker.png" alt="Bluetooth Speaker" class="rel-image" loading="lazy" />
+        </div>
+        <h3 class="rel-card-title">Bluetooth Speaker</h3>
+      </a>
+
+      <!-- Card 2 -->
+      <a href="product/android-phone.html" class="rel-card">
+        <span class="rel-badge">New</span>
+        <div class="rel-image-box">
+          <img src="assets/images/661434ae435852d2fff3f421_mobile-phone.png" alt="Android Phone" class="rel-image" loading="lazy" />
+        </div>
+        <h3 class="rel-card-title">Android Phone</h3>
+      </a>
+
+      <!-- Card 3 -->
+      <a href="product/gaming-joystick.html" class="rel-card">
+        <span class="rel-badge">New</span>
+        <div class="rel-image-box">
+          <img src="assets/images/661434f2e6bf600979311531_console.png" alt="Gaming Joystick" class="rel-image" loading="lazy" />
+        </div>
+        <h3 class="rel-card-title">Gaming Joystick</h3>
+      </a>
+
+      <!-- Card 4 -->
+      <a href="product/4k-cctv-cam.html" class="rel-card">
+        <span class="rel-badge">New</span>
+        <div class="rel-image-box">
+          <img src="assets/images/661437d4d459ad2cdcebc958_cctv.png" alt="NX - CCTV" class="rel-image" loading="lazy" />
+        </div>
+        <h3 class="rel-card-title">NX - CCTV</h3>
+      </a>
+
+      <!-- Card 5 -->
+      <a href="product/rgb-headphone.html" class="rel-card">
+        <span class="rel-badge">New</span>
+        <div class="rel-image-box">
+          <img src="assets/images/661434de4c27867d46b2ec38_headphones.png" alt="RGB Headphone" class="rel-image" loading="lazy" />
+        </div>
+        <h3 class="rel-card-title">RGB Headphone</h3>
+      </a>
+
+      <!-- Card 6 -->
+      <a href="product/gaming-keyboard.html" class="rel-card">
+        <span class="rel-badge">New</span>
+        <div class="rel-image-box">
+          <img src="assets/images/66143472af87772600fe5a97_Keyboard.png" alt="Gaming Keyboard" class="rel-image" loading="lazy" />
+        </div>
+        <h3 class="rel-card-title">Gaming Keyboard</h3>
+      </a>
+
+      <!-- Card 7 -->
+      <a href="product/nx-airbuds.html" class="rel-card">
+        <span class="rel-badge">New</span>
+        <div class="rel-image-box">
+          <img src="assets/images/66143467a42283daa2ac942b_earbuds.png" alt="NX Airbuds" class="rel-image" loading="lazy" />
+        </div>
+        <h3 class="rel-card-title">NX Airbuds</h3>
+      </a>
+    </div>
+
+    <!-- Bottom Navigation Bar with Progress Line and Arrow Buttons -->
+    <div class="bottom-nav-bar">
+      <div class="progress-line-track"></div>
+      <div class="rel-arrows">
+        <button type="button" class="rel-arrow" aria-label="Previous" onclick="(function(){var t=document.getElementById('rel-products-track');var c=t.querySelector('.rel-card');var step=c?c.getBoundingClientRect().width+20:280;t.scrollBy({left:-step,behavior:'smooth'});})()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button type="button" class="rel-arrow" aria-label="Next" onclick="(function(){var t=document.getElementById('rel-products-track');var c=t.querySelector('.rel-card');var step=c?c.getBoundingClientRect().width+20:280;t.scrollBy({left:step,behavior:'smooth'});})()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer id="footer" class="footer">
       <div class="main-footer">
         <div class="container">
