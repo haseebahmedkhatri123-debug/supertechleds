@@ -155,21 +155,122 @@ html, body, .page-wrapper, .section, .container, ._2-column-container {
   <div class="product-sku-line" style="margin: 6px 0 14px; font-size: 13.5px; color: #6b7093; font-weight: 600;">SKU: <span style="color: #14142b; font-weight: 700;">NXCCTV10K8</span></div>
   <!-- <p class="product-short-description">Effect font move vertical share. Connection frame edit export arrow. Undo device move opacity image layer. List star blur strikethrough arrow.</p> -->
 
-  <div class="ask-price-wrapper">
-    <a href="#" class="primary-button w-inline-block">
-      
-      <div class="button-text-wrapper">
-        <div class="default-text">Specsheet</div>
-        <div class="hover-text white">Specsheet</div>
-      </div>
-      <div class="button-bg-color"></div>
-    </a>
+  <style>
+    .quick-specs-row {
+      display: flex;
+      border: 1px solid #eef0f6;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
 
+    .quick-specs-col {
+      flex: 1;
+      padding: 10px 16px;
+      border-right: 1px solid #eef0f6;
+    }
+
+    .quick-specs-col:last-child {
+      border-right: none;
+    }
+
+    .quick-specs-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #9a9eb3;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .quick-specs-value {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--1-main-colors--primary, #1fa35b);
+    }
+  </style>
+
+  <div class="quick-specs-row">
+    <div class="quick-specs-col">
+      <div class="quick-specs-label">Resolution</div>
+      <div class="quick-specs-value">4K</div>
+    </div>
+    <div class="quick-specs-col">
+      <div class="quick-specs-label">Night Vision</div>
+      <div class="quick-specs-value">100ft</div>
+    </div>
+    <div class="quick-specs-col">
+      <div class="quick-specs-label">Power</div>
+      <div class="quick-specs-value">DC12V / PoE</div>
+    </div>
+    <div class="quick-specs-col">
+      <div class="quick-specs-label">Rating</div>
+      <div class="quick-specs-value">IP67</div>
+    </div>
+  </div>
+
+  <style>
+    .qty-stepper {
+      display: flex;
+      align-items: center;
+      border: 1px solid #dcdfe8;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 48px;
+      flex: 0 0 auto;
+    }
+
+    .qty-stepper button {
+      width: 40px;
+      height: 100%;
+      border: none;
+      background: #f7f9fc;
+      color: #14142b;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+    }
+
+    .qty-stepper button:hover {
+      background: #eef0f6;
+    }
+
+    .qty-stepper input {
+      width: 44px;
+      height: 100%;
+      border: none;
+      border-left: 1px solid #dcdfe8;
+      border-right: 1px solid #dcdfe8;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: #14142b;
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+
+    .qty-stepper input::-webkit-outer-spin-button,
+    .qty-stepper input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
+
+  <div class="ask-price-wrapper">
+    <div class="qty-stepper">
+      <button type="button" aria-label="Decrease quantity" onclick="(function(b){var i=b.parentElement.querySelector('input');var v=Math.max(1,(parseInt(i.value,10)||1)-1);i.value=v;})(this)">−</button>
+      <input type="number" value="1" min="1" aria-label="Quantity" oninput="if(this.value<1||this.value==='')this.value=1;" />
+      <button type="button" aria-label="Increase quantity" onclick="(function(b){var i=b.parentElement.querySelector('input');var v=(parseInt(i.value,10)||1)+1;i.value=v;})(this)">+</button>
+    </div>
     <a href="#" class="primary-button w-inline-block">
-      
+
       <div class="button-text-wrapper">
-        <div class="default-text">Ask for Price</div>
-        <div class="hover-text white">Ask for Price</div>
+        <div class="default-text">Add to Quote</div>
+        <div class="hover-text white">Add to Quote</div>
       </div>
       <div class="button-bg-color"></div>
     </a>
@@ -234,11 +335,119 @@ html, body, .page-wrapper, .section, .container, ._2-column-container {
       font-weight: 600;
       text-align: right;
     }
+
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding: 20px 22px;
+    }
+
+    .feature-item {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      transition: transform 0.2s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .feature-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .certs-row {
+      display: flex;
+      gap: 16px;
+      padding: 20px 22px;
+      flex-wrap: wrap;
+    }
+
+    .cert-badge {
+      border: 1px solid #e2e5ed;
+      border-radius: 10px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      color: #14142b;
+      min-width: 64px;
+      height: 56px;
+      box-sizing: border-box;
+    }
+
+    .documents-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding: 24px 22px;
+    }
+
+    .document-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 88px;
+      text-decoration: none;
+    }
+
+    .document-item svg {
+      width: 44px;
+      height: 52px;
+      color: #dfe2ea;
+      transition: color 0.2s ease;
+    }
+
+    .document-item:hover svg {
+      color: var(--1-main-colors--primary, #1fa35b);
+    }
+
+    .document-item span {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #14142b;
+      text-align: center;
+      line-height: 1.35;
+    }
   </style>
 
   <div class="detailed-description-container">
 
     <div class="specs-container">
+
+       <div class="specs-card">
+        <div class="specs-card-title">Features</div>
+        <div class="features-grid">
+          <div class="feature-item">
+            <img src="assets/icons/5YearWarrantyIcon-sq.svg" alt="5 Year Warranty" loading="lazy" />
+          </div>
+          <div class="feature-item">
+            <img src="assets/icons/BacklitIcon-sq.svg" alt="Backlit" loading="lazy" />
+          </div>
+          <div class="feature-item">
+            <img src="assets/icons/ColorSelectableIcon-sq.svg" alt="Color Selectable" loading="lazy" />
+          </div>
+          <div class="feature-item">
+            <img src="assets/icons/DimmableIcon-sq.svg" alt="Dimmable" loading="lazy" />
+          </div>
+          <div class="feature-item">
+            <img src="assets/icons/WetLocationIcon-sq.svg" alt="Wet Location Rated" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+      
       <div class="specs-card">
         <div class="specs-card-title">Specifications</div>
         <div class="specs-row"><div class="specs-label">Item Number</div><div class="specs-value">NXCCTV10K8</div></div>
@@ -268,6 +477,48 @@ html, body, .page-wrapper, .section, .container, ._2-column-container {
         <div class="specs-row"><div class="specs-label">Power Consumption</div><div class="specs-value">8W</div></div>
         <div class="specs-row"><div class="specs-label">Operating Temp</div><div class="specs-value">-22°F to 140°F</div></div>
         <div class="specs-row"><div class="specs-label">Warranty</div><div class="specs-value">3 Years</div></div>
+      </div>
+
+     
+
+      <div class="specs-card">
+        <div class="specs-card-title">Certifications</div>
+        <div class="certs-row">
+          <div class="cert-badge">CE</div>
+          <div class="cert-badge">FCC</div>
+          <div class="cert-badge">RoHS</div>
+          <div class="cert-badge">IP67</div>
+        </div>
+      </div>
+
+      <div class="specs-card">
+        <div class="specs-card-title">Documents</div>
+        <div class="documents-grid">
+          <a href="#" class="document-item">
+            <svg viewBox="0 0 48 48" width="44" height="52"><path fill="currentColor" d="M40 45L8 45 8 3 30 3 40 13z"></path><path fill="#fff" opacity="0.55" d="M38.5 14L29 14 29 4.5z"></path></svg>
+            <span>Specification Sheet</span>
+          </a>
+          <a href="#" class="document-item">
+            <svg viewBox="0 0 48 48" width="44" height="52"><path fill="currentColor" d="M40 45L8 45 8 3 30 3 40 13z"></path><path fill="#fff" opacity="0.55" d="M38.5 14L29 14 29 4.5z"></path></svg>
+            <span>Family Specification Sheet</span>
+          </a>
+          <a href="#" class="document-item">
+            <svg viewBox="0 0 48 48" width="44" height="52"><path fill="currentColor" d="M40 45L8 45 8 3 30 3 40 13z"></path><path fill="#fff" opacity="0.55" d="M38.5 14L29 14 29 4.5z"></path></svg>
+            <span>Install Guide</span>
+          </a>
+          <a href="#" class="document-item">
+            <svg viewBox="0 0 48 48" width="44" height="52"><path fill="currentColor" d="M40 45L8 45 8 3 30 3 40 13z"></path><path fill="#fff" opacity="0.55" d="M38.5 14L29 14 29 4.5z"></path></svg>
+            <span>Dimmer Compatibility</span>
+          </a>
+          <a href="#" class="document-item">
+            <svg viewBox="0 0 48 48" width="44" height="52"><path fill="currentColor" d="M40 45L8 45 8 3 30 3 40 13z"></path><path fill="#fff" opacity="0.55" d="M38.5 14L29 14 29 4.5z"></path></svg>
+            <span>IES File</span>
+          </a>
+          <a href="#" class="document-item">
+            <svg viewBox="0 0 48 48" width="44" height="52"><path fill="currentColor" d="M40 45L8 45 8 3 30 3 40 13z"></path><path fill="#fff" opacity="0.55" d="M38.5 14L29 14 29 4.5z"></path></svg>
+            <span>Warranty</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>

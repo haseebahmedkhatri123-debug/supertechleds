@@ -1825,7 +1825,7 @@ textarea.w-select {
     left: 0;
 }
 :root {
-    --1-main-colors--heading: black;
+    --1-main-colors--heading: #0E314D;
     --1-main-colors--paragraph: #848484;
     --1-main-colors--primary: #1fa35b;
     --extra--white\<deleted\|variable-cd2144b0-f38c-41be-827e-ad9ce9a95ba1\>: #fff;
@@ -1833,7 +1833,7 @@ textarea.w-select {
     --1-main-colors--border: #e7eaee;
     --border-radius--radius-4px\<deleted\|variable-bafc211e-2a65-69ed-5755-0ba3118f66c4\>: 4px;
     --5-radius--border-xl: 40px;
-    --1-main-colors--black: #000;
+    --1-main-colors--black: #0E314D;
     --1-main-colors--white: white;
     --3-secondary--secondary-50\<deleted\|variable-3d86c03b-3811-e646-6770-928c47108029\>: #e7eaee;
     --5-radius--border-sm: 5px;
