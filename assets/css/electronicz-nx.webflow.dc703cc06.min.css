@@ -3842,7 +3842,6 @@ figure {
     grid-column-gap: 40px;
     justify-content: space-between;
     align-items: flex-start;
-    padding-top: 80px;
     padding-bottom: 60px;
     display: flex;
 }
