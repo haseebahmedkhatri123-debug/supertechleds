@@ -4691,7 +4691,7 @@ figure {
 .mobile-banner-conents {
     grid-column-gap: 30px;
     grid-row-gap: 30px;
-    width: 60%;
+    width: 100%;
     padding-bottom: 62px;
 }
 ._560px-image {
