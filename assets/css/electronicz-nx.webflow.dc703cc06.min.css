@@ -7376,6 +7376,7 @@ figure {
 .breadcrumb-inliner {
     background-color: var(--1-main-colors--primary);
     width: 30px;
+    transform: rotate(295deg);
     height: 2px;
 }
 .hero-buttons-wraper {
