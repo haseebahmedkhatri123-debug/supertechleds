@@ -943,175 +943,307 @@
       }
 
     </style>
+    <style>
+      .cat-sidebar {
+        flex: 0 0 270px;
+        width: 100%;
+        max-width: 270px;
+      }
+
+      .cat-sidebar-panel {
+        background: #fff;
+        border: 1px solid #eceef5;
+        border-radius: 16px;
+        padding: 22px;
+      }
+
+      .cat-sidebar-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 6px;
+      }
+
+      .cat-sidebar-head h3 {
+        font-size: 16px;
+        font-weight: 800;
+        color: #14142b;
+        margin: 0;
+      }
+
+      .cat-sidebar-clear {
+        font-size: 12.5px;
+        font-weight: 700;
+        color: var(--1-main-colors--primary, #1fa35b);
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+      }
+
+      .cat-filter-group {
+        padding: 18px 0;
+        border-bottom: 1px solid #eceef5;
+      }
+
+      .cat-filter-group:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .cat-filter-group-title {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: .06em;
+        color: #14142b;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+
+      .cat-filter-check-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 0;
+        font-size: 13.5px;
+        color: #5b5f7a;
+        cursor: pointer;
+      }
+
+      .cat-filter-check-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .cat-filter-check-row input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        accent-color: var(--1-main-colors--primary, #1fa35b);
+        cursor: pointer;
+      }
+
+      .cat-filter-check-count {
+        font-size: 11.5px;
+        color: #9a9eb3;
+      }
+
+      .cat-range-values {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12.5px;
+        color: #14142b;
+        font-weight: 700;
+        margin-bottom: 14px;
+      }
+
+      .cat-range-wrapper {
+        position: relative;
+        height: 4px;
+        background: #e6e8f0;
+        border-radius: 2px;
+        margin: 10px 3px 6px;
+      }
+
+      .cat-range-fill {
+        position: absolute;
+        height: 100%;
+        background: var(--1-main-colors--primary, #1fa35b);
+        border-radius: 2px;
+      }
+
+      .cat-range-input {
+        position: absolute;
+        top: -8px;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        margin: 0;
+        background: none;
+        pointer-events: none;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+
+      .cat-range-input::-webkit-slider-thumb {
+        pointer-events: all;
+        -webkit-appearance: none;
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid var(--1-main-colors--primary, #1fa35b);
+        cursor: pointer;
+        box-shadow: 0 1px 4px rgba(20, 20, 43, .2);
+      }
+
+      .cat-range-input::-moz-range-thumb {
+        pointer-events: all;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid var(--1-main-colors--primary, #1fa35b);
+        cursor: pointer;
+      }
+
+      .cat-size-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .cat-size-pill {
+        padding: 7px 14px;
+        border: 1px solid #e2e4ee;
+        border-radius: 8px;
+        font-size: 12.5px;
+        font-weight: 700;
+        color: #5b5f7a;
+        cursor: pointer;
+        background: #fff;
+        transition: border-color .2s ease, color .2s ease, background .2s ease;
+      }
+
+      .cat-size-pill.is-selected {
+        border-color: var(--1-main-colors--primary, #1fa35b);
+        color: #178a49;
+        background: #f4f9f6;
+      }
+
+      .cat-color-swatches {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .cat-color-swatch {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 1px #e2e4ee;
+        transition: box-shadow .2s ease;
+      }
+
+      .cat-color-swatch.is-selected {
+        box-shadow: 0 0 0 2px var(--1-main-colors--primary, #1fa35b);
+      }
+
+      @media screen and (max-width: 991px) {
+        .cat-sidebar {
+          flex: 0 0 100%;
+          max-width: 100%;
+          margin-bottom: 20px;
+        }
+
+        .container._2-column-container {
+          flex-wrap: wrap;
+        }
+      }
+    </style>
     <section class="section">
       <div class="container _2-column-container">
-        <div class="main-block">
-          <div class="relative-block">
-            <style>
-              .cat-filters-bar {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 14px;
-                margin-top: 22px;
-                padding: 24px 0 22px;
-                border-bottom: 1px solid #eceef5
-              }
+        <div class="cat-sidebar">
+          <div class="cat-sidebar-panel">
+            <div class="cat-sidebar-head">
+              <h3>Filters</h3>
+              <button type="button" class="cat-sidebar-clear" id="cat-clear-filters">Clear All</button>
+            </div>
 
-              .cat-filter-dropdown {
-                position: relative
-              }
+            <div class="cat-filter-group">
+              <div class="cat-filter-group-title">Wattages</div>
+              <label class="cat-filter-check-row"><span class="cat-filter-check-left"><input type="checkbox" />Adjustable Wattages</span><span class="cat-filter-check-count">6</span></label>
+              <label class="cat-filter-check-row"><span class="cat-filter-check-left"><input type="checkbox" />Single Watts</span><span class="cat-filter-check-count">26</span></label>
+            </div>
 
-              .cat-filter-toggle {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                padding: 11px 18px;
-                border: 1px solid #e2e4ee;
-                border-radius: 30px;
-                background: #fff;
-                font-size: 13.5px;
-                font-weight: 700;
-                color: #14142b;
-                cursor: pointer;
-                transition: border-color .2s ease, background .2s ease
-              }
+            <div class="cat-filter-group">
+              <div class="cat-filter-group-title">Color Temperature</div>
+              <label class="cat-filter-check-row"><span class="cat-filter-check-left"><input type="checkbox" />Single CCT</span><span class="cat-filter-check-count">2</span></label>
+              <label class="cat-filter-check-row"><span class="cat-filter-check-left"><input type="checkbox" />Tunable CCT</span><span class="cat-filter-check-count">30</span></label>
+            </div>
 
-              .cat-filter-toggle:hover {
-                border-color: #1fa35b
-              }
-
-              .cat-filter-toggle svg {
-                width: 14px;
-                height: 14px;
-                transition: transform .25s ease
-              }
-
-              .cat-filter-dropdown.is-open .cat-filter-toggle {
-                background: #f4f9f6;
-                border-color: #1fa35b;
-                color: #178a49
-              }
-
-              .cat-filter-dropdown.is-open .cat-filter-toggle svg {
-                transform: rotate(180deg)
-              }
-
-              .cat-filter-panel {
-                position: absolute;
-                top: calc(100% + 10px);
-                left: 0;
-                z-index: 20;
-                display: none;
-                min-width: 270px;
-                background: #fff;
-                border-radius: 16px;
-                box-shadow: 0 18px 40px rgba(20, 20, 43, .14);
-                border: 1px solid #eceef5;
-                padding: 22px 22px 10px
-              }
-
-              .cat-filter-dropdown.is-open .cat-filter-panel {
-                display: block
-              }
-
-              .cat-filter-group-title {
-                font-size: 12px;
-                font-weight: 800;
-                letter-spacing: .06em;
-                color: #14142b;
-                text-transform: uppercase;
-                margin-bottom: 14px
-              }
-
-              .cat-filter-option {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 9px 0;
-                font-size: 14px;
-                color: #5b5f7a;
-                cursor: pointer
-              }
-
-              .cat-filter-option:hover {
-                color: #178a49
-              }
-
-              .cat-filter-count {
-                font-size: 12px;
-                color: #8a8ea6;
-                border: 1px solid #e2e4ee;
-                border-radius: 20px;
-                padding: 2px 11px;
-                min-width: 30px;
-                text-align: center
-              }
-
-              .cat-filter-divider {
-                border: none;
-                border-top: 1px solid #eceef5;
-                margin: 14px 0
-              }
-
-              @media screen and (max-width:600px) {
-                .cat-filter-panel {
-                  left: auto;
-                  right: 0;
-                  min-width: 240px
-                }
-              }
-            </style>
-            <div class="cat-filters-bar">
-              <div class="cat-filter-dropdown"><button type="button" class="cat-filter-toggle">Wattages <svg
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="m6 9 6 6 6-6" />
-                  </svg></button>
-                <div class="cat-filter-panel">
-                  <div class="cat-filter-group-title">Wattages</div>
-                  <div class="cat-filter-option"><span>Adjustable Wattages</span><span class="cat-filter-count">6</span>
-                  </div>
-                  <div class="cat-filter-option"><span>Single Watts</span><span class="cat-filter-count">26</span></div>
-                </div>
-              </div>
-              <div class="cat-filter-dropdown"><button type="button" class="cat-filter-toggle">Color Temperature <svg
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="m6 9 6 6 6-6" />
-                  </svg></button>
-                <div class="cat-filter-panel">
-                  <div class="cat-filter-group-title">Color Temperature</div>
-                  <div class="cat-filter-option"><span>Single CCT</span><span class="cat-filter-count">2</span></div>
-                  <div class="cat-filter-option"><span>Tunable CCT</span><span class="cat-filter-count">30</span></div>
-                </div>
-              </div>
-              <div class="cat-filter-dropdown"><button type="button" class="cat-filter-toggle">Input Voltages <svg
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="m6 9 6 6 6-6" />
-                  </svg></button>
-                <div class="cat-filter-panel">
-                  <div class="cat-filter-group-title">Input Voltages</div>
-                  <div class="cat-filter-option"><span>120-277V/AC</span><span class="cat-filter-count">32</span></div>
-                </div>
+            <div class="cat-filter-group">
+              <div class="cat-filter-group-title">Lumens</div>
+              <div class="cat-range-values"><span id="cat-lumens-min-label">0</span><span id="cat-lumens-max-label">2000</span></div>
+              <div class="cat-range-wrapper">
+                <div class="cat-range-fill" id="cat-lumens-fill"></div>
+                <input type="range" class="cat-range-input" id="cat-lumens-min" min="0" max="2000" step="50" value="0" />
+                <input type="range" class="cat-range-input" id="cat-lumens-max" min="0" max="2000" step="50" value="2000" />
               </div>
             </div>
-            <script>
-              (function () {
-                document.querySelectorAll('.cat-filter-dropdown').forEach(function (dd) {
-                  var toggle = dd.querySelector('.cat-filter-toggle');
-                  toggle.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    var isOpen = dd.classList.contains('is-open');
-                    document.querySelectorAll('.cat-filter-dropdown.is-open').forEach(function (o) { o.classList.remove('is-open'); });
-                    if (!isOpen) dd.classList.add('is-open');
-                  });
-                });
-                document.addEventListener('click', function () {
-                  document.querySelectorAll('.cat-filter-dropdown.is-open').forEach(function (o) { o.classList.remove('is-open'); });
-                });
-              })();
-            </script>
+
+            <div class="cat-filter-group">
+              <div class="cat-filter-group-title">Size</div>
+              <div class="cat-size-options">
+                <div class="cat-size-pill">2&quot;</div>
+                <div class="cat-size-pill">4&quot;</div>
+                <div class="cat-size-pill">6&quot;</div>
+                <div class="cat-size-pill">8&quot;</div>
+              </div>
+            </div>
+
+            <div class="cat-filter-group">
+              <div class="cat-filter-group-title">Color</div>
+              <div class="cat-color-swatches">
+                <div class="cat-color-swatch" style="background:#ffffff" title="White"></div>
+                <div class="cat-color-swatch" style="background:#14142b" title="Black"></div>
+                <div class="cat-color-swatch" style="background:#8a8d9f" title="Grey"></div>
+                <div class="cat-color-swatch" style="background:#c8a25e" title="Gold"></div>
+                <div class="cat-color-swatch" style="background:#1fa35b" title="Green"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          (function () {
+            document.querySelectorAll('.cat-filter-check-row, .cat-size-pill, .cat-color-swatch').forEach(function (el) {
+              if (el.classList.contains('cat-size-pill') || el.classList.contains('cat-color-swatch')) {
+                el.addEventListener('click', function () { el.classList.toggle('is-selected'); });
+              }
+            });
+
+            var minInput = document.getElementById('cat-lumens-min');
+            var maxInput = document.getElementById('cat-lumens-max');
+            var minLabel = document.getElementById('cat-lumens-min-label');
+            var maxLabel = document.getElementById('cat-lumens-max-label');
+            var fill = document.getElementById('cat-lumens-fill');
+
+            function updateLumens() {
+              var min = parseInt(minInput.value, 10);
+              var max = parseInt(maxInput.value, 10);
+              if (min > max) { var t = min; min = max; max = t; }
+              minLabel.textContent = min;
+              maxLabel.textContent = max;
+              var range = parseInt(minInput.max, 10) - parseInt(minInput.min, 10);
+              var left = ((min - minInput.min) / range) * 100;
+              var right = ((max - minInput.min) / range) * 100;
+              fill.style.left = left + '%';
+              fill.style.width = (right - left) + '%';
+            }
+
+            if (minInput && maxInput) {
+              minInput.addEventListener('input', updateLumens);
+              maxInput.addEventListener('input', updateLumens);
+              updateLumens();
+            }
+
+            var clearBtn = document.getElementById('cat-clear-filters');
+            if (clearBtn) {
+              clearBtn.addEventListener('click', function () {
+                document.querySelectorAll('.cat-filter-check-row input[type="checkbox"]').forEach(function (cb) { cb.checked = false; });
+                document.querySelectorAll('.cat-size-pill.is-selected, .cat-color-swatch.is-selected').forEach(function (el) { el.classList.remove('is-selected'); });
+                minInput.value = minInput.min;
+                maxInput.value = maxInput.max;
+                updateLumens();
+              });
+            }
+          })();
+        </script>
+        <div class="main-block">
+          <div class="relative-block">
             <div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="w-tabs">
               <div class="shop-bar w-tab-menu">
                 <div class="cat-results-count"><strong>4</strong> Products Found</div>

@@ -656,17 +656,10 @@
                         <div class="hero-contents">
                           <h1 class="hero-title-60px">ElectronicZ: Innovation Meets Excellence!</h1>
                           <div class="hero-price">Joystick</div>
-                          <div class="hero-buttons-wraper"><a data-w-id="82f65908-8e47-7661-a6c1-44be96abbb8d"
-                              href="#" class="white-button w-inline-block">
+                          <div class="hero-buttons-wraper"><a href="#" class="primary-button w-inline-block">
                               <div class="button-text-wrapper">
-                                <div class="default-text">View Product</div>
-                                <div class="hover-text white">View Product</div>
-                              </div>
-                              <div class="button-bg-color white"></div>
-                            </a><a href="#" class="primary-button w-inline-block">
-                              <div class="button-text-wrapper">
-                                <div class="default-text">Shop Products Now</div>
-                                <div class="hover-text white">Shop Products Now</div>
+                                <div class="default-text">View Products</div>
+                                <div class="hover-text white">View Products</div>
                               </div>
                               <div class="button-bg-color"></div>
                             </a></div>
@@ -703,17 +696,10 @@
                         <div class="hero-contents">
                           <h1 class="hero-title-60px">ElectronicZ: Innovation Meets Excellence!</h1>
                           <div class="hero-price">NX - Phone</div>
-                          <div class="hero-buttons-wraper"><a data-w-id="dfd83c89-9e53-a1a2-b42b-b108cf588443"
-                              href="#" class="white-button w-inline-block">
+                          <div class="hero-buttons-wraper"><a href="#" class="primary-button w-inline-block">
                               <div class="button-text-wrapper">
-                                <div class="default-text">View Product</div>
-                                <div class="hover-text white">View Product</div>
-                              </div>
-                              <div class="button-bg-color white"></div>
-                            </a><a href="#" class="primary-button w-inline-block">
-                              <div class="button-text-wrapper">
-                                <div class="default-text">Shop Products Now</div>
-                                <div class="hover-text white">Shop Products Now</div>
+                                <div class="default-text">View Products</div>
+                                <div class="hover-text white">View Products</div>
                               </div>
                               <div class="button-bg-color"></div>
                             </a></div>
@@ -750,17 +736,10 @@
                         <div class="hero-contents">
                           <h1 class="hero-title-60px">ElectronicZ: Innovation Meets Excellence!</h1>
                           <div class="hero-price">White Headphone</div>
-                          <div class="hero-buttons-wraper"><a data-w-id="dfb01f63-25bf-4623-b93f-c4216753be92"
-                              href="#" class="white-button w-inline-block">
+                          <div class="hero-buttons-wraper"><a href="#" class="primary-button w-inline-block">
                               <div class="button-text-wrapper">
-                                <div class="default-text">View Product</div>
-                                <div class="hover-text white">View Product</div>
-                              </div>
-                              <div class="button-bg-color white"></div>
-                            </a><a href="#" class="primary-button w-inline-block">
-                              <div class="button-text-wrapper">
-                                <div class="default-text">Shop Products Now</div>
-                                <div class="hover-text white">Shop Products Now</div>
+                                <div class="default-text">View Products</div>
+                                <div class="hover-text white">View Products</div>
                               </div>
                               <div class="button-bg-color"></div>
                             </a></div>
@@ -811,6 +790,268 @@
             </style>
           </div>
         </div>
+
+        <style>
+          .popular-cat-section {
+            padding: 60px 0;
+          }
+
+          .popular-cat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 28px;
+          }
+
+          .popular-cat-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #14142b;
+            margin: 0;
+          }
+
+          .popular-cat-arrows {
+            display: flex;
+            gap: 10px;
+            flex: 0 0 auto;
+          }
+
+          .popular-cat-arrow {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid #e2e4ee;
+            background: #ffffff;
+            color: #14142b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            outline: none;
+          }
+
+          .popular-cat-arrow:hover {
+            background: #14142b;
+            color: #ffffff;
+            border-color: #14142b;
+            transform: translateY(-2px);
+          }
+
+          .popular-cat-arrow svg {
+            width: 18px;
+            height: 18px;
+          }
+
+          .popular-cat-track {
+            display: flex;
+            gap: 22px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding: 6px 4px 18px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--1-main-colors--primary, #1fa35b) #eceef5;
+          }
+
+          .popular-cat-track::-webkit-scrollbar {
+            height: 8px;
+          }
+
+          .popular-cat-track::-webkit-scrollbar-track {
+            background: #eceef5;
+            border-radius: 10px;
+          }
+
+          .popular-cat-track::-webkit-scrollbar-thumb {
+            background: var(--1-main-colors--primary, #1fa35b);
+            border-radius: 10px;
+          }
+
+          .popular-cat-track .site-cat-card {
+            flex: 0 0 calc((100% - 66px) / 4);
+            min-width: 260px;
+            scroll-snap-align: start;
+          }
+
+          .popular-cat-section .site-cat-card {
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            border: 1px solid #eceef5;
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(20, 20, 43, 0.05);
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+          }
+
+          .popular-cat-section .site-cat-card:hover {
+            border-color: var(--1-main-colors--primary, #1fa35b);
+            box-shadow: 0 14px 30px rgba(31, 163, 91, 0.18);
+          }
+
+          .popular-cat-section .site-cat-card-image {
+            width: 100%;
+            padding: 50px;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+          }
+
+          .popular-cat-section .site-cat-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.4s ease;
+          }
+
+          .popular-cat-section .site-cat-card:hover .site-cat-card-image img {
+            transform: scale(1.06);
+          }
+
+          .popular-cat-section .site-cat-card-footer {
+            display: flex;
+            align-items: stretch;
+            border-top: 1px solid #eceef5;
+          }
+
+          .popular-cat-section .site-cat-card-info {
+            flex: 1;
+            min-width: 0;
+            padding: 18px 18px;
+          }
+
+          .popular-cat-section .site-cat-card-title {
+            font-size: 15.5px;
+            font-weight: 800;
+            color: #14142b;
+            margin: 0 0 8px;
+          }
+
+          .popular-cat-section .site-cat-card-desc {
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: #6b7093;
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+
+          .popular-cat-section .site-cat-card-view {
+            flex: 0 0 92px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border-left: 1px solid #eceef5;
+            padding: 18px 10px;
+            text-align: center;
+          }
+
+          .popular-cat-section .site-cat-card-view svg {
+            width: 18px;
+            height: 18px;
+            color: var(--1-main-colors--primary, #1fa35b);
+            transition: transform 0.25s ease;
+          }
+
+          .popular-cat-section .site-cat-card-view span {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #14142b;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+          }
+
+          .popular-cat-section .site-cat-card:hover .site-cat-card-view svg {
+            transform: translateX(4px);
+          }
+
+          @media screen and (max-width: 767px) {
+            .popular-cat-track .site-cat-card {
+              flex: 0 0 80vw;
+            }
+          }
+        </style>
+        <section class="section popular-cat-section">
+          <div class="container">
+            <div class="popular-cat-header">
+              <h2>Most Popular Categories</h2>
+              <div class="popular-cat-arrows">
+                <button type="button" class="popular-cat-arrow" aria-label="Previous"
+                  onclick="(function(){var t=document.getElementById('popular-cat-track');var c=t.querySelector('.site-cat-card');var step=c?c.getBoundingClientRect().width+22:280;t.scrollBy({left:-step,behavior:'smooth'});})()">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <button type="button" class="popular-cat-arrow" aria-label="Next"
+                  onclick="(function(){var t=document.getElementById('popular-cat-track');var c=t.querySelector('.site-cat-card');var step=c?c.getBoundingClientRect().width+22:280;t.scrollBy({left:step,behavior:'smooth'});})()">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="popular-cat-track" id="popular-cat-track">
+              <a href="#" class="site-cat-card">
+                <div class="site-cat-card-image">
+                  <img src="./assets/images/cat-image 1.webp" alt="Headphones" loading="lazy" />
+                </div>
+                <div class="site-cat-card-footer">
+                  <div class="site-cat-card-info">
+                    <div class="site-cat-card-title">Headphones</div>
+                    <p class="site-cat-card-desc">Immersive, high-fidelity headphones built for everyday listening, gaming, and travel. Enjoy deep bass, noise isolation, and all-day comfort across wired and wireless styles.</p>
+                  </div>
+                  <div class="site-cat-card-view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><span>View</span></div>
+                </div>
+              </a>
+
+              <a href="#" class="site-cat-card">
+                <div class="site-cat-card-image">
+                  <img src="./assets/images/cat-image 2.webp" alt="Speakers" loading="lazy" />
+                </div>
+                <div class="site-cat-card-footer">
+                  <div class="site-cat-card-info">
+                    <div class="site-cat-card-title">Speakers</div>
+                    <p class="site-cat-card-desc">From compact Bluetooth speakers to powerful home audio systems, find rich, room-filling sound for parties, workouts, and everyday background music.</p>
+                  </div>
+                  <div class="site-cat-card-view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><span>View</span></div>
+                </div>
+              </a>
+
+              <a href="#" class="site-cat-card">
+                <div class="site-cat-card-image">
+                  <img src="./assets/images/cat-image 3.webp" alt="Smart Watches" loading="lazy" />
+                </div>
+                <div class="site-cat-card-footer">
+                  <div class="site-cat-card-info">
+                    <div class="site-cat-card-title">Smart Watches</div>
+                    <p class="site-cat-card-desc">Stay connected and track your health on the go with smart watches featuring fitness tracking, notifications, and long battery life for everyday wear.</p>
+                  </div>
+                  <div class="site-cat-card-view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><span>View</span></div>
+                </div>
+              </a>
+
+              <a href="#" class="site-cat-card">
+                <div class="site-cat-card-image">
+                  <img src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661922d2df2553a78d32bf91_wepik-export-20240408182823vadU.webp" alt="CCTV Cameras" loading="lazy" />
+                </div>
+                <div class="site-cat-card-footer">
+                  <div class="site-cat-card-info">
+                    <div class="site-cat-card-title">CCTV Cameras</div>
+                    <p class="site-cat-card-desc">Keep your home or business secure with wireless and wired CCTV cameras offering night vision, motion alerts, and remote live viewing from your phone.</p>
+                  </div>
+                  <div class="site-cat-card-view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><span>View</span></div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section class="top-picks-section">
           <div class="container">
             <div class="top-picks-header">
@@ -1381,7 +1622,7 @@
           <div class="category-list" id="jwl-category-track">
             <a href="#" class="category-link">
               <div class="category-img"><img class="category-image" loading="lazy" alt="Headphones"
-                  src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6619440b10530ec35eb0ab72_wepik-export-20240412141328GIah.webp" />
+                  src="./assets/images/application-image-01.webp" />
               </div>
               <div class="category-data">
                 <div>
@@ -1393,7 +1634,7 @@
             </a>
             <a href="#" class="category-link">
               <div class="category-img"><img class="category-image" loading="lazy" alt="Cameras"
-                  src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/66200432aeab3e323842f924_3246.webp" />
+                  src="./assets/images/application-image-02.webp" />
               </div>
               <div class="category-data">
                 <div>
@@ -1405,7 +1646,7 @@
             </a>
             <a href="#" class="category-link">
               <div class="category-img"><img class="category-image" loading="lazy" alt="Speakers"
-                  src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6617962d8d3ae24a08d8d69f_1268.webp" />
+                  src="./assets/images/application-image-03.webp" />
               </div>
               <div class="category-data">
                 <div>
@@ -1417,7 +1658,7 @@
             </a>
             <a href="#" class="category-link">
               <div class="category-img"><img class="category-image" loading="lazy" alt="Smart Watches"
-                  src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/66179eb3c198a8a42f004a32_152.webp" />
+                  src="./assets/images/application-image-04.webp" />
               </div>
               <div class="category-data">
                 <div>
@@ -1429,7 +1670,7 @@
             </a>
             <a href="#" class="category-link">
               <div class="category-img"><img class="category-image" loading="lazy" alt="Laptops"
-                  src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661b86c4df6b936aa699fb6a_2763.webp" />
+                  src="./assets/images/application-image-05.webp" />
               </div>
               <div class="category-data">
                 <div>
@@ -1441,7 +1682,7 @@
             </a>
             <a href="#" class="category-link">
               <div class="category-img"><img class="category-image" loading="lazy" alt="Keyboards"
-                  src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/66010b96fb3d1aa1984783d0_Keyboard 2.webp" />
+                  src="./assets/images/application-image-01.webp 2.webp" />
               </div>
               <div class="category-data">
                 <div>
@@ -1453,7 +1694,7 @@
             </a>
             <a href="#" class="category-link">
               <div class="category-img"><img class="category-image" loading="lazy" alt="Earbuds"
-                  src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/66010b96fb3d1aa1984783c6_PngItem_5999824.webp" />
+                  src="./assets/images/application-image-02.webp" />
               </div>
               <div class="category-data">
                 <div>
@@ -1465,7 +1706,7 @@
             </a>
             <a href="#" class="category-link">
               <div class="category-img"><img class="category-image" loading="lazy" alt="Gaming Joysticks"
-                  src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661929752e8f03c80cb4a626_wepik-export-20240408174307z8iv.webp" />
+                  src="./assets/images/application-image-03.webp" />
               </div>
               <div class="category-data">
                 <div>
