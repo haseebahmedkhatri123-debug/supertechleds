@@ -53,13 +53,63 @@
 
 <body>
   <style>
+    html, body {
+      overflow-x: hidden;
+    }
+
     .header-wrapper {
       overflow: visible
     }
 
     .top-navigation {
       padding-top: 18px;
-      padding-bottom: 18px
+      padding-bottom: 18px;
+      background: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%);
+    }
+
+    .top-navigation .navbar-logo-wrapper {
+      background: transparent;
+    }
+
+
+    .top-navigation .navbar {
+      background: transparent;
+      border-top-color: transparent;
+      border-bottom-color: transparent;
+    }
+
+    .top-navigation .nav-menu-wrapper {
+      background: transparent;
+    }
+
+    .top-navigation .nav-link {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .top-navigation .nav-link:hover,
+    .top-navigation .nav-link.w--current {
+      color: var(--1-main-colors--primary, #1fa35b);
+    }
+
+    .top-navigation .nav-dropdown-toggle {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .top-navigation .nav-dropdown-toggle:hover {
+      color: var(--1-main-colors--primary, #1fa35b);
+    }
+
+    .top-navigation ._1px-width-divider {
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .top-navigation .search-icon-trigger {
+      color: #ffffff;
+    }
+
+    .top-navigation .hamburger-icon,
+    .top-navigation .cross-icon {
+      color: #ffffff;
     }
 
     .nav-menu-wrapper {
@@ -84,13 +134,26 @@
 
     .shopby-dropdown-body {
       opacity: 1 !important;
-      width: 900px;
-      max-width: 92vw;
-      padding: 32px 36px;
-      background: #fff;
-      border: 1px solid #eff0f6;
-      border-radius: 20px;
-      box-shadow: 0 16px 48px #14142b26
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      width: 100vw;
+      padding: 40px 0 44px;
+      background: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%);
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28)
+    }
+
+    .shopby-dropdown-inner {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 20px;
+      box-sizing: border-box;
     }
 
     .shopby-header {
@@ -99,7 +162,7 @@
       justify-content: space-between;
       margin-bottom: 26px;
       padding-bottom: 16px;
-      border-bottom: 1px solid #eee
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14)
     }
 
     .shopby-header .shopby-title {
@@ -107,20 +170,20 @@
       font-weight: 800;
       letter-spacing: .04em;
       text-transform: uppercase;
-      color: #14142b
+      color: #ffffff
     }
 
     .shopby-header .shopby-viewall {
       font-size: 13px;
       font-weight: 600;
-      color: inherit;
+      color: var(--1-main-colors--primary, #1fa35b);
       text-decoration: underline;
       text-underline-offset: 3px
     }
 
     .shopby-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(12, 1fr);
       row-gap: 34px;
       column-gap: 14px;
       justify-items: center
@@ -196,7 +259,7 @@
 
     @media screen and (max-width:991px) {
       .shopby-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         column-gap: 14px
       }
     }
@@ -210,7 +273,16 @@
 
       .shopby-dropdown-body {
         width: auto;
+        left: auto;
+        right: auto;
+        margin-left: 0;
+        margin-right: 0;
         padding: 18px
+      }
+
+      .shopby-dropdown-inner {
+        max-width: 100%;
+        padding: 0;
       }
 
       .shopby-grid {
@@ -462,7 +534,7 @@
       <div class="container">
         <div class="space-between-block main-header-row"><a href="#" aria-current="page"
             class="navbar-logo-wrapper w-nav-brand w--current"><img
-              src="./assets/images/supertech_logo-removebg-preview.png" loading="lazy" width="70" alt=""
+              src="./assets/images/green white STL logo.png" loading="lazy" width="70" alt=""
               class="site-logo" /></a>
           <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-easing="ease"
             data-collapse="medium" data-w-id="5c73ce63-e248-b03e-3bd4-c7d9696f9614" role="banner" data-duration="400"
@@ -517,6 +589,7 @@
                   </ul>
                   <nav class="nav-dropdown-contents w-dropdown-list shopby-dropdown-list">
                     <div class="shopby-dropdown-body">
+                      <div class="shopby-dropdown-inner">
                       <div class="shopby-header">
                         <div class="shopby-title">Shop By Category</div><a href="#" class="shopby-viewall">View All</a>
                       </div>
@@ -552,6 +625,7 @@
                           class="shopby-item"><span class="shopby-name">Watch</span><span class="shopby-circle"><img
                               loading="lazy" src="assets/images/661434cd6180b56f03c3f655_smart-watch.png"
                               alt="" /></span></a></div>
+                      </div>
                     </div>
                   </nav>
                 </nav>
@@ -659,38 +733,49 @@
       margin: 0;
     }
   </style>
-  <section class="breadcrumb-section plain-breadcrumb-section"><div class="container"><div class="breadcrumb-block plain-breadcrumb-block"><a href="#" class="breadcrumb">Home</a><div class="breadcrumb-inliner"></div><a href="#" class="breadcrumb">Shop</a><div class="breadcrumb-inliner"></div><div class="breadcrumb active">Audio Accessories</div></div><a href="#" class="breadcrumb-view-all">View All<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></section>
   <div class="page-wrapper">
-    <section class="section no-top-margin-section">
-      <div class="container">
+    <section class="section no-top-margin-section" style="background: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%);">
+      <div class="container" >
         <style>
           .audio-hero-banner {
             position: relative;
             overflow: hidden;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: stretch;
-            min-height: 360px;
+            min-height: 400px;
             margin-top: 0;
-            padding: 0;
+            padding: 46px;
             display: flex;
+            gap: 0;
+            background: transparent;
           }
 
           .audio-hero-text-panel {
-            flex: 0 0 42%;
+            flex: 0 0 44%;
             max-width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 50px 56px;
+            padding: 46px 44px;
             box-sizing: border-box;
             position: relative;
             z-index: 2;
+            /* background: rgba(255, 255, 255, 0.06); */
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 22px;
+            /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); */
           }
 
           .audio-hero-image-panel {
             flex: 1;
             position: relative;
             overflow: hidden;
+            border-radius: 22px;
+            margin-left: 34px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
           }
 
           .audio-hero-bg {
@@ -705,6 +790,63 @@
 
           .audio-hero-banner .mobile-banner-conents {
             max-width: 100%;
+          }
+
+          .dark-breadcrumb-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+          }
+
+          .dark-breadcrumb-block {
+            display: flex;
+            align-items: center;
+          }
+
+          .dark-breadcrumb-row .breadcrumb-view-all {
+            color: var(--1-main-colors--primary, #1fa35b);
+            flex: 0 0 auto;
+          }
+
+          .dark-breadcrumb-row .breadcrumb-view-all:hover {
+            color: #7ee2a8;
+          }
+
+          .dark-breadcrumb-block a.breadcrumb {
+            border: none;
+            background: none;
+            padding: 0;
+            min-width: auto;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: normal;
+            text-decoration: none;
+          }
+
+          .dark-breadcrumb-block a.breadcrumb:hover {
+            color: var(--1-main-colors--primary, #1fa35b);
+          }
+
+          .dark-breadcrumb-block .breadcrumb.active {
+            border: none;
+            background: none;
+            padding: 0;
+            min-width: auto;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: normal;
+          }
+
+          .dark-breadcrumb-block .breadcrumb-inliner {
+            margin: 0 8px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 13.5px;
           }
 
           @media screen and (max-width: 767px) {
@@ -723,11 +865,21 @@
               flex: none;
               width: 100%;
               height: 220px;
+              margin-left: 0;
+              margin-top: 24px;
+            }
+
+            .audio-hero-banner {
+              padding: 24px;
             }
           }
         </style>
         <div class="mobile-banner audio-hero-banner">
           <div class="audio-hero-text-panel">
+            <div class="dark-breadcrumb-row">
+              <div class="breadcrumb-block dark-breadcrumb-block"><a href="#" class="breadcrumb">Home</a><div class="breadcrumb-inliner"></div><a href="#" class="breadcrumb">Shop</a><div class="breadcrumb-inliner"></div><div class="breadcrumb active">Audio Accessories</div></div>
+              <a href="#" class="breadcrumb-view-all">View All<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            </div>
             <div class="w-layout-vflex mobile-banner-conents">
               <h2 class="promo-category-title">Audio Accessories</h2>
               <p class="promo-category-desc">Lorem ipsum dolor sit amet cmagni  expedita. Enim nam magni consectetur aliquid autem ad eveniet, nemo accusantium debitis saepe fugiat, quam corrupti adipisci aperiam laborum sequi placeat quibusdam praesentium reprehenderit? Non consequuntur possimus ea libero veritatis alias minus ex nulla quos voluptatum.</p>

@@ -43,6 +43,10 @@
   <script
     type="text/javascript">window.__WEBFLOW_CURRENCY_SETTINGS = { "currencyCode": "USD", "symbol": "$", "decimal": ".", "fractionDigits": 2, "group": ",", "template": "{{wf {\"path\":\"symbol\",\"type\":\"PlainText\"} }} {{wf {\"path\":\"amount\",\"type\":\"CommercePrice\"} }} {{wf {\"path\":\"currencyCode\",\"type\":\"PlainText\"} }}", "hideDecimalForWholeNumbers": false };</script>
   <style>
+    html, body {
+      overflow-x: hidden;
+    }
+
     .header-wrapper {
       overflow: visible
     }
@@ -54,7 +58,15 @@
     }
 
     .page-wrapper>.section:first-child {
-      margin-top: 0 !important
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      background: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%);
+      padding: 40px 0;
+    }
+
+    .page-wrapper>.section:first-child .hero-slider {
+      background: transparent;
+      border-radius: 0;
     }
 
     .product-thumbnail {
@@ -115,7 +127,52 @@
 
     .top-navigation {
       padding-top: 18px;
-      padding-bottom: 18px
+      padding-bottom: 18px;
+      background: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%);
+    }
+
+    .top-navigation .navbar-logo-wrapper {
+      background: transparent;
+    }
+
+    .top-navigation .navbar {
+      background: transparent;
+      border-top-color: transparent;
+      border-bottom-color: transparent;
+    }
+
+    .top-navigation .nav-menu-wrapper {
+      background: transparent;
+    }
+
+    .top-navigation .nav-link {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .top-navigation .nav-link:hover,
+    .top-navigation .nav-link.w--current {
+      color: var(--1-main-colors--primary, #1fa35b);
+    }
+
+    .top-navigation .nav-dropdown-toggle {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .top-navigation .nav-dropdown-toggle:hover {
+      color: var(--1-main-colors--primary, #1fa35b);
+    }
+
+    .top-navigation ._1px-width-divider {
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .top-navigation .search-icon-trigger {
+      color: #ffffff;
+    }
+
+    .top-navigation .hamburger-icon,
+    .top-navigation .cross-icon {
+      color: #ffffff;
     }
 
     .nav-menu-wrapper {
@@ -140,13 +197,26 @@
 
     .shopby-dropdown-body {
       opacity: 1 !important;
-      width: 900px;
-      max-width: 92vw;
-      padding: 32px 36px;
-      background: #fff;
-      border: 1px solid #eff0f6;
-      border-radius: 20px;
-      box-shadow: 0 16px 48px #14142b26
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      width: 100vw;
+      padding: 40px 0 44px;
+      background: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%);
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28)
+    }
+
+    .shopby-dropdown-inner {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 20px;
+      box-sizing: border-box;
     }
 
     .shopby-header {
@@ -155,7 +225,7 @@
       justify-content: space-between;
       margin-bottom: 26px;
       padding-bottom: 16px;
-      border-bottom: 1px solid #eee
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14)
     }
 
     .shopby-header .shopby-title {
@@ -163,20 +233,20 @@
       font-weight: 800;
       letter-spacing: .04em;
       text-transform: uppercase;
-      color: #0E314D
+      color: #ffffff
     }
 
     .shopby-header .shopby-viewall {
       font-size: 13px;
       font-weight: 600;
-      color: inherit;
+      color: var(--1-main-colors--primary, #1fa35b);
       text-decoration: underline;
       text-underline-offset: 3px
     }
 
     .shopby-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(12, 1fr);
       row-gap: 34px;
       column-gap: 14px;
       justify-items: center
@@ -252,7 +322,7 @@
 
     @media screen and (max-width:991px) {
       .shopby-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         column-gap: 14px
       }
     }
@@ -266,7 +336,16 @@
 
       .shopby-dropdown-body {
         width: auto;
+        left: auto;
+        right: auto;
+        margin-left: 0;
+        margin-right: 0;
         padding: 18px
+      }
+
+      .shopby-dropdown-inner {
+        max-width: 100%;
+        padding: 0;
       }
 
       .shopby-grid {
@@ -289,190 +368,6 @@
       }
     }
 
-    .cat-carousel-section {
-      background: #fff;
-      padding: 70px 0
-    }
-
-    .cat-carousel-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 20px 36px
-    }
-
-    .cat-carousel-head h2 {
-      color: #0E314D;
-      font-size: 32px;
-      font-weight: 800;
-      margin: 0
-    }
-
-    .cat-carousel-head span {
-      color: #1fa35b
-    }
-
-    .cat-carousel-track {
-      display: flex;
-      gap: 24px;
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 6px 20px 10px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      scroll-snap-type: x mandatory;
-      -ms-overflow-style: none;
-      scrollbar-width: none
-    }
-
-    .cat-carousel-track::-webkit-scrollbar {
-      display: none
-    }
-
-    .cat-carousel-card {
-      position: relative;
-      flex: 0 0 calc((100% - 96px) / 5);
-      scroll-snap-align: start;
-      cursor: pointer;
-      text-decoration: none;
-      display: block
-    }
-
-    .cat-card-inner {
-      position: relative;
-      height: 100%;
-      background: transparent;
-      border-radius: 24px;
-      padding: 22px 10px 10px;
-      box-shadow: none
-    }
-
-    .cat-flip {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      height: 210px;
-      margin: 0 auto;
-      perspective: 800px
-    }
-
-    .cat-flip-face {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: transparent;
-      display: block;
-      backface-visibility: hidden;
-      transform-style: preserve-3d;
-      transition: transform .45s cubic-bezier(.4, 0, .2, 1), opacity .45s cubic-bezier(.4, 0, .2, 1)
-    }
-
-    .cat-flip-front {
-      transform: rotateY(0deg);
-      opacity: 1;
-      z-index: 2
-    }
-
-    .cat-flip-back {
-      transform: rotateY(-90deg);
-      opacity: 0;
-      z-index: 1
-    }
-
-    @media (hover:hover) and (pointer:fine) {
-      .cat-carousel-card:hover .cat-flip-front {
-        transform: rotateY(90deg);
-        opacity: 0
-      }
-
-      .cat-carousel-card:hover .cat-flip-back {
-        transform: rotateY(0deg);
-        opacity: 1
-      }
-    }
-
-    .cat-plinth {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      height: 150px;
-      padding: 0 14px 20px;
-      margin-top: -125px;
-      background: linear-gradient(135deg, #22b562, #178a49);
-      border-radius: 4px 60px 60px 4px
-    }
-
-    .cat-plinth-icon {
-      display: none
-    }
-
-    .cat-carousel-title {
-      color: #fff;
-      font-size: 15px;
-      font-weight: 800;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: .02em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis
-    }
-
-    .cat-carousel-arrows {
-      display: flex;
-      gap: 10px;
-      justify-content: flex-end;
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 28px 20px 0
-    }
-
-    .cat-carousel-arrow {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1px solid #e2e4ee;
-      background: #fff;
-      color: #0E314D;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background .25s ease, transform .2s ease, color .25s ease
-    }
-
-    .cat-carousel-arrow:hover {
-      background: #0E314D;
-      color: #fff;
-      transform: translateY(-2px)
-    }
-
-    .cat-carousel-arrow svg {
-      width: 18px;
-      height: 18px
-    }
-
-    @media screen and (max-width:991px) {
-      .cat-carousel-card {
-        flex-basis: calc((100% - 48px) / 3)
-      }
-    }
-
-    @media screen and (max-width:767px) {
-      .cat-carousel-card {
-        flex-basis: 46vw
-      }
-
-      .cat-carousel-card img {
-        height: 110px
-      }
-    }
   </style>
 </head>
 
@@ -522,7 +417,7 @@
       <div class="container">
         <div class="space-between-block main-header-row"><a href="#" aria-current="page"
             class="navbar-logo-wrapper w-nav-brand w--current"><img
-              src="./assets/images/supertech_logo-removebg-preview.png" loading="lazy" width="70" alt=""
+              src="./assets/images/green white STL logo.png" loading="lazy" width="70" alt=""
               class="site-logo" /></a>
           <div data-animation="default" class="navbar w-nav" data-easing2="ease" data-easing="ease"
             data-collapse="medium" data-w-id="5c73ce63-e248-b03e-3bd4-c7d9696f9614" role="banner" data-duration="400"
@@ -577,6 +472,7 @@
                   </ul>
                   <nav class="nav-dropdown-contents w-dropdown-list shopby-dropdown-list">
                     <div class="shopby-dropdown-body">
+                      <div class="shopby-dropdown-inner">
                       <div class="shopby-header">
                         <div class="shopby-title">Shop By Category</div><a href="#" class="shopby-viewall">View
                           All</a>
@@ -617,6 +513,7 @@
                           href="#" class="shopby-item"><span class="shopby-name">Watch</span><span
                             class="shopby-circle"><img loading="lazy"
                               src="assets/images/661434cd6180b56f03c3f655_smart-watch.png" alt="" /></span></a></div>
+                      </div>
                     </div>
                   </nav>
                 </nav>
@@ -790,545 +687,8 @@
             </style>
           </div>
         </div>
-
-        <style>
-          .popular-cat-section {
-            padding: 60px 0;
-          }
-
-          .popular-cat-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 28px;
-          }
-
-          .popular-cat-header h2 {
-            font-size: 28px;
-            font-weight: 800;
-            color: #14142b;
-            margin: 0;
-          }
-
-          .popular-cat-arrows {
-            display: flex;
-            gap: 10px;
-            flex: 0 0 auto;
-          }
-
-          .popular-cat-arrow {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 1px solid #e2e4ee;
-            background: #ffffff;
-            color: #14142b;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            outline: none;
-          }
-
-          .popular-cat-arrow:hover {
-            background: #14142b;
-            color: #ffffff;
-            border-color: #14142b;
-            transform: translateY(-2px);
-          }
-
-          .popular-cat-arrow svg {
-            width: 18px;
-            height: 18px;
-          }
-
-          .popular-cat-track {
-            display: flex;
-            gap: 22px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            scroll-snap-type: x mandatory;
-            padding: 6px 4px 18px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--1-main-colors--primary, #1fa35b) #eceef5;
-          }
-
-          .popular-cat-track::-webkit-scrollbar {
-            height: 8px;
-          }
-
-          .popular-cat-track::-webkit-scrollbar-track {
-            background: #eceef5;
-            border-radius: 10px;
-          }
-
-          .popular-cat-track::-webkit-scrollbar-thumb {
-            background: var(--1-main-colors--primary, #1fa35b);
-            border-radius: 10px;
-          }
-
-          .popular-cat-track .site-cat-card {
-            flex: 0 0 calc((100% - 66px) / 4);
-            min-width: 260px;
-            scroll-snap-align: start;
-          }
-
-          .popular-cat-section .site-cat-card {
-            display: flex;
-            flex-direction: column;
-            background: #ffffff;
-            border: 1px solid #eceef5;
-            border-radius: 16px;
-            overflow: hidden;
-            text-decoration: none;
-            box-shadow: 0 4px 14px rgba(20, 20, 43, 0.05);
-            transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
-          }
-
-          .popular-cat-section .site-cat-card:hover {
-            border-color: var(--1-main-colors--primary, #1fa35b);
-            box-shadow: 0 14px 30px rgba(31, 163, 91, 0.18);
-          }
-
-          .popular-cat-section .site-cat-card-image {
-            width: 100%;
-            padding: 50px;
-            aspect-ratio: 4 / 3;
-            overflow: hidden;
-          }
-
-          .popular-cat-section .site-cat-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-            transition: transform 0.4s ease;
-          }
-
-          .popular-cat-section .site-cat-card:hover .site-cat-card-image img {
-            transform: scale(1.06);
-          }
-
-          .popular-cat-section .site-cat-card-footer {
-            display: flex;
-            align-items: stretch;
-            border-top: 1px solid #eceef5;
-          }
-
-          .popular-cat-section .site-cat-card-info {
-            flex: 1;
-            min-width: 0;
-            padding: 18px 18px;
-          }
-
-          .popular-cat-section .site-cat-card-title {
-            font-size: 15.5px;
-            font-weight: 800;
-            color: #14142b;
-            margin: 0 0 8px;
-          }
-
-          .popular-cat-section .site-cat-card-desc {
-            font-size: 12.5px;
-            line-height: 1.6;
-            color: #6b7093;
-            margin: 0;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-          }
-
-          .popular-cat-section .site-cat-card-view {
-            flex: 0 0 92px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border-left: 1px solid #eceef5;
-            padding: 18px 10px;
-            text-align: center;
-          }
-
-          .popular-cat-section .site-cat-card-view svg {
-            width: 18px;
-            height: 18px;
-            color: var(--1-main-colors--primary, #1fa35b);
-            transition: transform 0.25s ease;
-          }
-
-          .popular-cat-section .site-cat-card-view span {
-            font-size: 11.5px;
-            font-weight: 700;
-            color: #14142b;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-          }
-
-          .popular-cat-section .site-cat-card:hover .site-cat-card-view svg {
-            transform: translateX(4px);
-          }
-
-          @media screen and (max-width: 767px) {
-            .popular-cat-track .site-cat-card {
-              flex: 0 0 80vw;
-            }
-          }
-        </style>
-        <section class="section popular-cat-section">
-          <div class="container">
-            <div class="popular-cat-header">
-              <h2>Most Popular Categories</h2>
-              <div class="popular-cat-arrows">
-                <button type="button" class="popular-cat-arrow" aria-label="Previous"
-                  onclick="(function(){var t=document.getElementById('popular-cat-track');var c=t.querySelector('.site-cat-card');var step=c?c.getBoundingClientRect().width+22:280;t.scrollBy({left:-step,behavior:'smooth'});})()">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-                </button>
-                <button type="button" class="popular-cat-arrow" aria-label="Next"
-                  onclick="(function(){var t=document.getElementById('popular-cat-track');var c=t.querySelector('.site-cat-card');var step=c?c.getBoundingClientRect().width+22:280;t.scrollBy({left:step,behavior:'smooth'});})()">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="popular-cat-track" id="popular-cat-track">
-              <a href="#" class="site-cat-card">
-                <div class="site-cat-card-image">
-                  <img src="./assets/images/cat-image 1.webp" alt="Headphones" loading="lazy" />
-                </div>
-                <div class="site-cat-card-footer">
-                  <div class="site-cat-card-info">
-                    <div class="site-cat-card-title">Headphones</div>
-                    <p class="site-cat-card-desc">Immersive, high-fidelity headphones built for everyday listening, gaming, and travel. Enjoy deep bass, noise isolation, and all-day comfort across wired and wireless styles.</p>
-                  </div>
-                  <div class="site-cat-card-view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><span>View</span></div>
-                </div>
-              </a>
-
-              <a href="#" class="site-cat-card">
-                <div class="site-cat-card-image">
-                  <img src="./assets/images/cat-image 2.webp" alt="Speakers" loading="lazy" />
-                </div>
-                <div class="site-cat-card-footer">
-                  <div class="site-cat-card-info">
-                    <div class="site-cat-card-title">Speakers</div>
-                    <p class="site-cat-card-desc">From compact Bluetooth speakers to powerful home audio systems, find rich, room-filling sound for parties, workouts, and everyday background music.</p>
-                  </div>
-                  <div class="site-cat-card-view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><span>View</span></div>
-                </div>
-              </a>
-
-              <a href="#" class="site-cat-card">
-                <div class="site-cat-card-image">
-                  <img src="./assets/images/cat-image 3.webp" alt="Smart Watches" loading="lazy" />
-                </div>
-                <div class="site-cat-card-footer">
-                  <div class="site-cat-card-info">
-                    <div class="site-cat-card-title">Smart Watches</div>
-                    <p class="site-cat-card-desc">Stay connected and track your health on the go with smart watches featuring fitness tracking, notifications, and long battery life for everyday wear.</p>
-                  </div>
-                  <div class="site-cat-card-view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><span>View</span></div>
-                </div>
-              </a>
-
-              <a href="#" class="site-cat-card">
-                <div class="site-cat-card-image">
-                  <img src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661922d2df2553a78d32bf91_wepik-export-20240408182823vadU.webp" alt="CCTV Cameras" loading="lazy" />
-                </div>
-                <div class="site-cat-card-footer">
-                  <div class="site-cat-card-info">
-                    <div class="site-cat-card-title">CCTV Cameras</div>
-                    <p class="site-cat-card-desc">Keep your home or business secure with wireless and wired CCTV cameras offering night vision, motion alerts, and remote live viewing from your phone.</p>
-                  </div>
-                  <div class="site-cat-card-view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><span>View</span></div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section class="top-picks-section">
-          <div class="container">
-            <div class="top-picks-header">
-              <h2 class="top-picks-title">Our Top Picks for You</h2>
-              <div class="top-picks-tabs"><span class="top-picks-tab is-active">Trending Now</span><span
-                  class="top-picks-tab">New Arrivals</span></div>
-            </div>
-            <div class="top-picks-content">
-              <div class="top-picks-banner">
-                <img src="./assets/images/supertech_logo-removebg-preview.png" alt="" class="top-picks-banner-bg"
-                  loading="lazy" />
-                <div class="top-picks-banner-overlay"></div>
-                <div class="top-picks-banner-content">
-                  <div class="top-picks-banner-eyebrow">Electronicz Picks</div>
-                  <div class="top-picks-banner-heading">Discover Our Best Selling Collection</div>
-                  <a href="#" class="top-picks-banner-link">Shop Now</a>
-                </div>
-              </div>
-              <div class="top-picks-carousel-wrap">
-                <div class="top-picks-carousel" id="top-picks-carousel"><a href="#"
-                    class="top-picks-card">
-                    <div class="top-picks-card-image">
-                      <div class="top-picks-badge">New</div><img class="top-picks-img-front"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/66010b96fb3d1aa1984783b1_PngItem_6449224.webp"
-                        alt="Smart Watch" loading="lazy" /><img class="top-picks-img-back"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/66179eb3c198a8a42f004a32_152.webp"
-                        alt="Smart Watch alternate" loading="lazy" />
-                    </div>
-                    <div class="top-picks-card-name">Smart Watch</div>
-
-                  </a><a href="#" class="top-picks-card">
-                    <div class="top-picks-card-image">
-                      <div class="top-picks-badge">New</div><img class="top-picks-img-front"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6619438595324ebab0699157_wepik-export-20240412141404PR3p.webp"
-                        alt="RGB Headphone" loading="lazy" /><img class="top-picks-img-back"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661943a1b8bbeef51146f925_6013.webp"
-                        alt="RGB Headphone alternate" loading="lazy" />
-                    </div>
-                    <div class="top-picks-card-name">RGB Headphone</div>
-
-                  </a><a href="#" class="top-picks-card">
-                    <div class="top-picks-card-image">
-                      <div class="top-picks-badge">New</div><img class="top-picks-img-front"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/66010b96fb3d1aa1984783d0_Keyboard 2.webp"
-                        alt="Gaming Keyboard" loading="lazy" /><img class="top-picks-img-back"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6617b1359edb485542d24b2b_51072 (1).webp"
-                        alt="Gaming Keyboard alternate" loading="lazy" />
-                    </div>
-                    <div class="top-picks-card-name">Gaming Keyboard</div>
-
-                  </a><a href="#" class="top-picks-card">
-                    <div class="top-picks-card-image">
-                      <div class="top-picks-badge">New</div><img class="top-picks-img-front"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/66010b96fb3d1aa1984783c6_PngItem_5999824.webp"
-                        alt="NX Airbuds" loading="lazy" /><img class="top-picks-img-back"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/66179a19ed8a60c1c1c747db_2151074308.webp"
-                        alt="NX Airbuds alternate" loading="lazy" />
-                    </div>
-                    <div class="top-picks-card-name">NX Airbuds</div>
-
-                  </a><a href="#" class="top-picks-card">
-                    <div class="top-picks-card-image">
-                      <div class="top-picks-badge">New</div><img class="top-picks-img-front"
-                        src="assets/images/661b8868df6b936aa69b7996_883.jpg" alt="Bluetooth Speaker"
-                        loading="lazy" /><img class="top-picks-img-back"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661ffdf2a500d449dba12618_142 (1).webp"
-                        alt="Bluetooth Speaker alternate" loading="lazy" />
-                    </div>
-                    <div class="top-picks-card-name">Bluetooth Speaker</div>
-
-                  </a><a href="#" class="top-picks-card">
-                    <div class="top-picks-card-image">
-                      <div class="top-picks-badge">New</div><img class="top-picks-img-front"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661e6ca474a92dd0680b8222_5669 (1).webp"
-                        alt="Android Phone" loading="lazy" /><img class="top-picks-img-back"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661939c4914830d7f13fdb4e_26253.webp"
-                        alt="Android Phone alternate" loading="lazy" />
-                    </div>
-                    <div class="top-picks-card-name">Android Phone</div>
-
-                  </a><a href="#" class="top-picks-card">
-                    <div class="top-picks-card-image">
-                      <div class="top-picks-badge">New</div><img class="top-picks-img-front"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661929752e8f03c80cb4a626_wepik-export-20240408174307z8iv.webp"
-                        alt="Gaming Joystick" loading="lazy" /><img class="top-picks-img-back"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6620084ceee087ee7eb4e926_50926 (1).webp"
-                        alt="Gaming Joystick alternate" loading="lazy" />
-                    </div>
-                    <div class="top-picks-card-name">Gaming Joystick</div>
-
-                  </a><a href="#" class="top-picks-card">
-                    <div class="top-picks-card-image">
-                      <div class="top-picks-badge">New</div><img class="top-picks-img-front"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6619231a886f40126f20b6d4_wepik-export-202404081828242ZIi.webp"
-                        alt="NX - CCTV" loading="lazy" /><img class="top-picks-img-back"
-                        src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661923c7814a0eb81b251ac7_3839 (1).webp"
-                        alt="NX - CCTV alternate" loading="lazy" />
-                    </div>
-                    <div class="top-picks-card-name">NX - CCTV</div>
-
-                  </a></div>
-              </div>
-            </div>
-            <div class="top-picks-scrollbar-row">
-              <div class="top-picks-scrollbar-track">
-                <div class="top-picks-scrollbar-fill" id="top-picks-scrollbar-fill"></div>
-              </div>
-              <div class="top-picks-arrows">
-                <button type="button" class="top-picks-arrow" id="top-picks-prev" aria-label="Scroll left"><svg
-                    width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m15 18-6-6 6-6" />
-                  </svg></button>
-                <button type="button" class="top-picks-arrow" id="top-picks-next" aria-label="Scroll right"><svg
-                    width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m9 18 6-6-6-6" />
-                  </svg></button>
-              </div>
-            </div>
-          </div>
-        </section>
-        <script>
-          (function () {
-            var track = document.getElementById('top-picks-carousel');
-            var fill = document.getElementById('top-picks-scrollbar-fill');
-            var prev = document.getElementById('top-picks-prev');
-            var next = document.getElementById('top-picks-next');
-            if (!track) return;
-            function updateFill() {
-              var max = track.scrollWidth - track.clientWidth;
-              var pct = max > 0 ? (track.scrollLeft / max) * 100 : 0;
-              fill.style.width = Math.max(10, pct) + '%';
-              prev.classList.toggle('is-disabled', track.scrollLeft <= 4);
-              next.classList.toggle('is-disabled', track.scrollLeft >= max - 4);
-            }
-            function scrollByCard(dir) {
-              var card = track.querySelector('.top-picks-card');
-              var gap = 24;
-              var amount = card ? (card.offsetWidth + gap) * 2 : 300;
-              track.scrollBy({ left: dir * amount, behavior: 'smooth' });
-            }
-            prev.addEventListener('click', function () { scrollByCard(-1); });
-            next.addEventListener('click', function () { scrollByCard(1); });
-            track.addEventListener('scroll', updateFill, { passive: true });
-            window.addEventListener('resize', updateFill);
-            updateFill();
-          })();
-        </script>
       </section>
-      <section class="top-picks-section">
-        <div class="container">
-          <div class="top-picks-header">
-            <h2 class="top-picks-title">Latest <span class="text-color-primary">Products</span></h2>
-          </div>
-          <div class="top-picks-content">
-            <div class="top-picks-banner">
-              <img src="./assets/images/supertech_logo-removebg-preview.png" alt="" class="top-picks-banner-bg"
-                loading="lazy" />
-              <div class="top-picks-banner-overlay"></div>
-              <div class="top-picks-banner-content">
-                <div class="top-picks-banner-eyebrow">New This Week</div>
-                <div class="top-picks-banner-heading">Discover Our Newest Arrivals</div>
-                <a href="#" class="top-picks-banner-link">Shop Now</a>
-              </div>
-            </div>
-            <div class="top-picks-carousel-wrap">
-              <div class="top-picks-carousel" id="latest-products-carousel">
-                <a href="#" class="top-picks-card">
-                  <div class="top-picks-card-image"><img class="top-picks-img-front"
-                      src="assets/images/661b8b1b0872119944540098_16.jpg" alt="NX-Speaker" loading="lazy" /><img
-                      class="top-picks-img-back"
-                      src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661d4edbec41e77e6bea2854_95 (1).webp"
-                      alt="NX-Speaker alternate" loading="lazy" /></div>
-                  <div class="top-picks-card-name">NX-Speaker</div>
-                  <div class="w-layout-hflex star-wrapper">
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                  </div>
-                </a>
-                <a href="#" class="top-picks-card">
-                  <div class="top-picks-card-image"><img class="top-picks-img-front"
-                      src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661b86c4df6b936aa699fb6a_2763.webp"
-                      alt="Black Laptop" loading="lazy" /><img class="top-picks-img-back"
-                      src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661b86dbdf6b936aa69a0a95_2150763335.webp"
-                      alt="Black Laptop alternate" loading="lazy" /></div>
-                  <div class="top-picks-card-name">Black Laptop</div>
-                  <div class="w-layout-hflex star-wrapper">
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                  </div>
-                </a>
-                <a href="#" class="top-picks-card">
-                  <div class="top-picks-card-image"><img class="top-picks-img-front"
-                      src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6619440b10530ec35eb0ab72_wepik-export-20240412141328GIah.webp"
-                      alt="Stereo Headphone" loading="lazy" /><img class="top-picks-img-back"
-                      src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661943abecfb692e28e22dc0_334.webp"
-                      alt="Stereo Headphone alternate" loading="lazy" /></div>
-                  <div class="top-picks-card-name">Stereo Headphone</div>
-                  <div class="w-layout-hflex star-wrapper">
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                  </div>
-                </a>
-                <a href="#" class="top-picks-card">
-                  <div class="top-picks-card-image"><img class="top-picks-img-front"
-                      src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6619438595324ebab0699157_wepik-export-20240412141404PR3p.webp"
-                      alt="RGB Headphone" loading="lazy" /><img class="top-picks-img-back"
-                      src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661943a1b8bbeef51146f925_6013.webp"
-                      alt="RGB Headphone alternate" loading="lazy" /></div>
-                  <div class="top-picks-card-name">RGB Headphone</div>
-                  <div class="w-layout-hflex star-wrapper">
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                    <div class="star-icon">star</div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="top-picks-scrollbar-row">
-            <div class="top-picks-scrollbar-track">
-              <div class="top-picks-scrollbar-fill" id="latest-products-scrollbar-fill"></div>
-            </div>
-            <div class="top-picks-arrows">
-              <button type="button" class="top-picks-arrow" id="latest-products-prev" aria-label="Scroll left"><svg
-                  width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m15 18-6-6 6-6" />
-                </svg></button>
-              <button type="button" class="top-picks-arrow" id="latest-products-next" aria-label="Scroll right"><svg
-                  width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m9 18 6-6-6-6" />
-                </svg></button>
-            </div>
-          </div>
-        </div>
-      </section>
-      <script>
-        (function () {
-          var track = document.getElementById('latest-products-carousel');
-          var fill = document.getElementById('latest-products-scrollbar-fill');
-          var prev = document.getElementById('latest-products-prev');
-          var next = document.getElementById('latest-products-next');
-          if (!track) return;
-          function updateFill() {
-            var max = track.scrollWidth - track.clientWidth;
-            var pct = max > 0 ? (track.scrollLeft / max) * 100 : 0;
-            fill.style.width = Math.max(10, pct) + '%';
-            prev.classList.toggle('is-disabled', track.scrollLeft <= 4);
-            next.classList.toggle('is-disabled', track.scrollLeft >= max - 4);
-          }
-          function scrollByCard(dir) {
-            var card = track.querySelector('.top-picks-card');
-            var gap = 24;
-            var amount = card ? (card.offsetWidth + gap) * 2 : 300;
-            track.scrollBy({ left: dir * amount, behavior: 'smooth' });
-          }
-          prev.addEventListener('click', function () { scrollByCard(-1); });
-          next.addEventListener('click', function () { scrollByCard(1); });
-          track.addEventListener('scroll', updateFill, { passive: true });
-          window.addEventListener('resize', updateFill);
-          updateFill();
-        })();
-      </script>
+
       <style>
         #jwl-category-section {
           padding: 100px 0;
@@ -1854,14 +1214,14 @@
     <div class="promo-grid">
       <!-- Promo Card 1 -->
       <a href="#" class="promo-card">
-        <img src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6619440b10530ec35eb0ab72_wepik-export-20240412141328GIah.webp" alt="Audio & Headphones" class="promo-bg" loading="lazy" />
+        <img src="./assets/images/catalog.webp" alt="Audio & Headphones" class="promo-bg" loading="lazy" />
         <div class="promo-overlay"></div>
         <div class="promo-content">
-          <h2 class="promo-title">Explore All Premium<br>Audio & Headphones</h2>
+          <h2 class="promo-title">Take our best <br>ideas with you.</h2>
           <div class="primary-button w-inline-block">
             <div class="button-text-wrapper">
-              <div class="default-text">Shop Now</div>
-              <div class="hover-text white">Shop Now</div>
+              <div class="default-text">View Now</div>
+              <div class="hover-text white">View Now</div>
             </div>
             <div class="button-bg-color"></div>
           </div>
@@ -1870,14 +1230,14 @@
 
       <!-- Promo Card 2 -->
       <a href="#" class="promo-card">
-        <img src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/66179eb3c198a8a42f004a32_152.webp" alt="Smart Watches & Gear" class="promo-bg" loading="lazy" />
+        <img src="./assets/images/catalog 2.webp" alt="Smart Watches & Gear" class="promo-bg" loading="lazy" />
         <div class="promo-overlay"></div>
         <div class="promo-content">
           <h2 class="promo-title">Grab The Latest<br>Smart Watches & Gear</h2>
           <div class="primary-button w-inline-block">
             <div class="button-text-wrapper">
-              <div class="default-text">Shop Now</div>
-              <div class="hover-text white">Shop Now</div>
+              <div class="default-text">View Now</div>
+              <div class="hover-text white">View Now</div>
             </div>
             <div class="button-bg-color"></div>
           </div>
@@ -1950,168 +1310,6 @@
           }
         })();
       </script>
-      <section class="cat-carousel-section">
-        <div class="cat-carousel-head">
-          <h2>Shop By <span>Category</span></h2>
-        </div>
-        <div class="cat-carousel-track" id="cat-carousel-track">
-          <a href="#" class="cat-carousel-card">
-            <div class="cat-card-inner">
-              <div class="cat-flip"><img class="cat-flip-face cat-flip-front"
-                  src="assets/images/flood light product.png" alt="Camera" /><img class="cat-flip-face cat-flip-back"
-                  src="assets/images/Super_Tech_Lights_40W_Low_Voltage_Landscape_12-24VDC_1-removebg-preview.png"
-                  alt="Camera alternate" /></div>
-              <div class="cat-plinth"><img class="cat-plinth-icon"
-                  src="assets/images/6614349f0ed8a6dbf1dde666_dslr-camera.png" alt="" />
-                <div class="cat-carousel-title">Camera</div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="cat-carousel-card">
-            <div class="cat-card-inner">
-              <div class="cat-flip"><img class="cat-flip-face cat-flip-front"
-                  src="assets/images/flood light product.png" alt="CCTV" /><img class="cat-flip-face cat-flip-back"
-                  src="assets/images/Super_Tech_Lights_40W_Low_Voltage_Landscape_12-24VDC_1-removebg-preview.png"
-                  alt="CCTV alternate" /></div>
-              <div class="cat-plinth"><img class="cat-plinth-icon" src="assets/images/661437d4d459ad2cdcebc958_cctv.png"
-                  alt="" />
-                <div class="cat-carousel-title">CCTV</div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="cat-carousel-card">
-            <div class="cat-card-inner">
-              <div class="cat-flip"><img class="cat-flip-face cat-flip-front"
-                  src="assets/images/flood light product.png" alt="Earbuds" /><img class="cat-flip-face cat-flip-back"
-                  src="assets/images/Super_Tech_Lights_40W_Low_Voltage_Landscape_12-24VDC_1-removebg-preview.png"
-                  alt="Earbuds alternate" /></div>
-              <div class="cat-plinth"><img class="cat-plinth-icon"
-                  src="assets/images/66143467a42283daa2ac942b_earbuds.png" alt="" />
-                <div class="cat-carousel-title">Earbuds</div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="cat-carousel-card">
-            <div class="cat-card-inner">
-              <div class="cat-flip"><img class="cat-flip-face cat-flip-front"
-                  src="assets/images/flood light product.png" alt="Headphone" /><img class="cat-flip-face cat-flip-back"
-                  src="assets/images/Super_Tech_Lights_40W_Low_Voltage_Landscape_12-24VDC_1-removebg-preview.png"
-                  alt="Headphone alternate" /></div>
-              <div class="cat-plinth"><img class="cat-plinth-icon"
-                  src="assets/images/661434de4c27867d46b2ec38_headphones.png" alt="" />
-                <div class="cat-carousel-title">Headphone</div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="cat-carousel-card">
-            <div class="cat-card-inner">
-              <div class="cat-flip"><img class="cat-flip-face cat-flip-front"
-                  src="assets/images/flood light product.png" alt="Joystick" /><img class="cat-flip-face cat-flip-back"
-                  src="assets/images/Super_Tech_Lights_40W_Low_Voltage_Landscape_12-24VDC_1-removebg-preview.png"
-                  alt="Joystick alternate" /></div>
-              <div class="cat-plinth"><img class="cat-plinth-icon"
-                  src="assets/images/661434f2e6bf600979311531_console.png" alt="" />
-                <div class="cat-carousel-title">Joystick</div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="cat-carousel-card">
-            <div class="cat-card-inner">
-              <div class="cat-flip"><img class="cat-flip-face cat-flip-front"
-                  src="assets/images/flood light product.png" alt="Keyboard" /><img class="cat-flip-face cat-flip-back"
-                  src="assets/images/Super_Tech_Lights_40W_Low_Voltage_Landscape_12-24VDC_1-removebg-preview.png"
-                  alt="Keyboard alternate" /></div>
-              <div class="cat-plinth"><img class="cat-plinth-icon"
-                  src="assets/images/66143472af87772600fe5a97_Keyboard.png" alt="" />
-                <div class="cat-carousel-title">Keyboard</div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="cat-carousel-card">
-            <div class="cat-card-inner">
-              <div class="cat-flip"><img class="cat-flip-face cat-flip-front"
-                  src="assets/images/flood light product.png" alt="Laptop" /><img class="cat-flip-face cat-flip-back"
-                  src="assets/images/Super_Tech_Lights_40W_Low_Voltage_Landscape_12-24VDC_1-removebg-preview.png"
-                  alt="Laptop alternate" /></div>
-              <div class="cat-plinth"><img class="cat-plinth-icon"
-                  src="assets/images/661434beb69c6e6b13af52f3_laptop.png" alt="" />
-                <div class="cat-carousel-title">Laptop</div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="cat-carousel-card">
-            <div class="cat-card-inner">
-              <div class="cat-flip"><img class="cat-flip-face cat-flip-front"
-                  src="assets/images/flood light product.png" alt="Monitor" /><img class="cat-flip-face cat-flip-back"
-                  src="assets/images/Super_Tech_Lights_40W_Low_Voltage_Landscape_12-24VDC_1-removebg-preview.png"
-                  alt="Monitor alternate" /></div>
-              <div class="cat-plinth"><img class="cat-plinth-icon"
-                  src="assets/images/6614349112dafb3af985299f_monitor.png" alt="" />
-                <div class="cat-carousel-title">Monitor</div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="cat-carousel-card">
-            <div class="cat-card-inner">
-              <div class="cat-flip"><img class="cat-flip-face cat-flip-front"
-                  src="assets/images/flood light product.png" alt="Mouse" /><img class="cat-flip-face cat-flip-back"
-                  src="assets/images/Super_Tech_Lights_40W_Low_Voltage_Landscape_12-24VDC_1-removebg-preview.png"
-                  alt="Mouse alternate" /></div>
-              <div class="cat-plinth"><img class="cat-plinth-icon"
-                  src="assets/images/6614347fd3e01ad1a958a430_mouse.png" alt="" />
-                <div class="cat-carousel-title">Mouse</div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="cat-carousel-card">
-            <div class="cat-card-inner">
-              <div class="cat-flip"><img class="cat-flip-face cat-flip-front"
-                  src="assets/images/flood light product.png" alt="Phone" /><img class="cat-flip-face cat-flip-back"
-                  src="assets/images/Super_Tech_Lights_40W_Low_Voltage_Landscape_12-24VDC_1-removebg-preview.png"
-                  alt="Phone alternate" /></div>
-              <div class="cat-plinth"><img class="cat-plinth-icon"
-                  src="assets/images/661434ae435852d2fff3f421_mobile-phone.png" alt="" />
-                <div class="cat-carousel-title">Phone</div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="cat-carousel-card">
-            <div class="cat-card-inner">
-              <div class="cat-flip"><img class="cat-flip-face cat-flip-front"
-                  src="assets/images/flood light product.png" alt="Speaker" /><img class="cat-flip-face cat-flip-back"
-                  src="assets/images/Super_Tech_Lights_40W_Low_Voltage_Landscape_12-24VDC_1-removebg-preview.png"
-                  alt="Speaker alternate" /></div>
-              <div class="cat-plinth"><img class="cat-plinth-icon"
-                  src="assets/images/661433876180b56f03c2bd9c_speaker.png" alt="" />
-                <div class="cat-carousel-title">Speaker</div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="cat-carousel-card">
-            <div class="cat-card-inner">
-              <div class="cat-flip"><img class="cat-flip-face cat-flip-front"
-                  src="assets/images/flood light product.png" alt="Watch" /><img class="cat-flip-face cat-flip-back"
-                  src="assets/images/Super_Tech_Lights_40W_Low_Voltage_Landscape_12-24VDC_1-removebg-preview.png"
-                  alt="Watch alternate" /></div>
-              <div class="cat-plinth"><img class="cat-plinth-icon"
-                  src="assets/images/661434cd6180b56f03c3f655_smart-watch.png" alt="" />
-                <div class="cat-carousel-title">Watch</div>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="cat-carousel-arrows"><button type="button" class="cat-carousel-arrow" aria-label="Previous"
-            onclick="(function(){var t=document.getElementById('cat-carousel-track');var c=t.querySelector('.cat-carousel-card');var step=c?c.getBoundingClientRect().width+24:300;t.scrollBy({left:-step,behavior:'smooth'});})()"><svg
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="m15 18-6-6 6-6" />
-            </svg></button><button type="button" class="cat-carousel-arrow" aria-label="Next"
-            onclick="(function(){var t=document.getElementById('cat-carousel-track');var c=t.querySelector('.cat-carousel-card');var step=c?c.getBoundingClientRect().width+24:300;t.scrollBy({left:step,behavior:'smooth'});})()"><svg
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="m9 18 6-6-6-6" />
-            </svg></button></div>
-      </section>
     </div>
     <!-- BLOG GRID CAROUSEL SECTION -->
     <style>
@@ -2626,7 +1824,7 @@
         <div class="container">
           <div class="footer-wrapper">
             <div class="footer-block first-block"><a href="#" class="navbar-logo-wrapper w-nav-brand"><img
-                  src="./assets/images/supertech_logo-removebg-preview.png" loading="lazy" width="70" alt=""
+                  src="./assets/images/green white STL logo.png" loading="lazy" width="70" alt=""
                   class="site-logo" /></a>
               <p class="footer-paragraph">At ElectronicZ, we&#x27;re dedicated to providing you with the best in
                 electronic innovation. Explore our wide range of products, from headphones to smart home devices.</p>
