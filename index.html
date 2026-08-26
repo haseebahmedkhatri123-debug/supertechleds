@@ -44,7 +44,12 @@
     type="text/javascript">window.__WEBFLOW_CURRENCY_SETTINGS = { "currencyCode": "USD", "symbol": "$", "decimal": ".", "fractionDigits": 2, "group": ",", "template": "{{wf {\"path\":\"symbol\",\"type\":\"PlainText\"} }} {{wf {\"path\":\"amount\",\"type\":\"CommercePrice\"} }} {{wf {\"path\":\"currencyCode\",\"type\":\"PlainText\"} }}", "hideDecimalForWholeNumbers": false };</script>
   <style>
     html, body {
-      overflow-x: hidden;
+      overflow-x: hidden !important;
+      max-width: 100%;
+    }
+
+    .shopby-dropdown-body {
+      max-width: 100vw;
     }
 
     .header-wrapper {
@@ -196,19 +201,19 @@
     }
 
     .shopby-dropdown-body {
-      opacity: 1 !important;
-      position: relative;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      width: 100vw;
-      padding: 40px 0 44px;
-      background: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%);
-      border: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 0;
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28)
+          opacity: 1 !important;
+    position: relative !important;
+    left: 36% !important;
+    top: 40% !important;
+
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    width: 100vw !important;
+    padding: 40px 0 44px;
+    background: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%);
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0;
     }
 
     .shopby-dropdown-inner {
@@ -256,7 +261,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: space-evenly;
       width: 100%;
       aspect-ratio: 1 / 1;
       text-decoration: none;
@@ -278,7 +283,7 @@
     .shopby-name {
       display: block;
       white-space: nowrap;
-      font-size: 13px;
+      font-size: 18px;
       font-weight: 700;
       color: #ffffff;
       margin-top: 0;
@@ -294,9 +299,15 @@
       margin-top: 10px
     }
 
+    .shopby-item:hover .shopby-circle{
+      width: 50px;
+      height: 50px;
+
+    }
+
     .shopby-circle {
-      width: 44px;
-      height: 44px;
+      width: 70px;
+      height: 70px;
       flex: 0 0 44px;
       display: flex;
       align-items: center;
@@ -352,8 +363,206 @@
       }
 
       .shopby-name {
-        font-size: 11px;
+        font-size: 15px;
       }
+    }
+
+    /* Mobile off-canvas nav drawer */
+    .mobile-menu-trigger {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      color: #ffffff;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0;
+      margin-left: 14px;
+    }
+
+    @media screen and (max-width: 991px) {
+      .menu-button.w-nav-button {
+        display: none !important;
+      }
+
+      .ecommerce-icons {
+        align-items: center;
+      }
+
+      .mobile-menu-trigger {
+        display: flex;
+      }
+    }
+
+    .mobile-nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 12, 24, 0.55);
+      z-index: 998;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+
+    .mobile-nav-overlay.is-open {
+      opacity: 1;
+    }
+
+    .mobile-nav-drawer {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 300px;
+      max-width: 82vw;
+      background: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%);
+      z-index: 999;
+      transform: translateX(-100%);
+      transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+      overflow: hidden;
+      box-shadow: 8px 0 30px rgba(0, 0, 0, .35);
+    }
+
+    .mobile-nav-drawer.is-open {
+      transform: translateX(0);
+    }
+
+    .mobile-nav-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      border-radius: 50%;
+      color: #ffffff;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .mobile-nav-panels {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
+    .mobile-nav-panel {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 60px 0 30px;
+      box-sizing: border-box;
+      background: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%);
+      transform: translateX(100%);
+      transition: transform .38s cubic-bezier(.4, 0, .2, 1);
+      visibility: hidden;
+      z-index: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-nav-panel[data-panel="root"] {
+      transform: translateX(0);
+      visibility: visible;
+      z-index: 1;
+    }
+
+    .mobile-nav-panel.is-active {
+      transform: translateX(0);
+      visibility: visible;
+      z-index: 2;
+    }
+
+    .mobile-nav-panel.is-leaving-left {
+      transform: translateX(-100%);
+      visibility: visible;
+    }
+
+    .mobile-nav-panel-header {
+      padding: 0 20px 4px;
+    }
+
+    .mobile-nav-back {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .mobile-nav-back:hover {
+      color: var(--1-main-colors--primary, #1fa35b);
+    }
+
+
+    .mobile-nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .mobile-nav-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      color: #ffffff;
+      font-size: 17px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      cursor: pointer;
+    }
+
+    .mobile-nav-item a {
+      flex: 1;
+      display: block;
+      padding: 11px 0;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .mobile-nav-item span.mobile-nav-label {
+      flex: 1;
+      padding: 11px 0;
+    }
+
+    .mobile-nav-item:hover,
+    .mobile-nav-item a:hover {
+      color: var(--1-main-colors--primary, #1fa35b);
+    }
+
+    .mobile-nav-chevron {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 20px;
+      margin-left: 8px;
+    }
+
+    #webflow-badge,
+    .w-webflow-badge {
+      display: none !important;
+    }
+
+    .mobile-nav-viewall {
+      color: var(--1-main-colors--primary, #1fa35b) !important;
     }
 
   </style>
@@ -514,6 +723,158 @@
               </div>
             </nav>
           </div>
+          <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+          <div class="mobile-nav-drawer" id="mobileNavDrawer">
+            <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" y1="4" x2="20" y2="20" />
+                <line x1="20" y1="4" x2="4" y2="20" />
+              </svg>
+            </button>
+            <div class="mobile-nav-panels">
+              <div class="mobile-nav-panel is-active" data-panel="root">
+                <ul class="mobile-nav-list">
+                  <li class="mobile-nav-item has-children" data-target="shopby"><span
+                      class="mobile-nav-label">Shop By</span><span class="mobile-nav-chevron">&#8250;</span></li>
+                  <li class="mobile-nav-item"><a href="#">Home</a></li>
+                  <li class="mobile-nav-item"><a href="#">About Us</a></li>
+                  <li class="mobile-nav-item"><a href="#">Shop</a></li>
+                  <li class="mobile-nav-item"><a href="#">Blog</a></li>
+                  <li class="mobile-nav-item"><a href="#">Contact</a></li>
+                  <li class="mobile-nav-item has-children" data-target="pages"><span
+                      class="mobile-nav-label">Pages</span><span class="mobile-nav-chevron">&#8250;</span></li>
+                </ul>
+              </div>
+              <div class="mobile-nav-panel" data-panel="shopby">
+                <div class="mobile-nav-panel-header"><button type="button" class="mobile-nav-back"
+                    data-back>&#8249; Back</button></div>
+                <ul class="mobile-nav-list">
+                  <li class="mobile-nav-item"><a href="#">Camera</a></li>
+                  <li class="mobile-nav-item"><a href="#">CCTV</a></li>
+                  <li class="mobile-nav-item"><a href="#">Earbuds</a></li>
+                  <li class="mobile-nav-item"><a href="#">Headphone</a></li>
+                  <li class="mobile-nav-item"><a href="#">Joystick</a></li>
+                  <li class="mobile-nav-item"><a href="#">Keyboard</a></li>
+                  <li class="mobile-nav-item"><a href="#">Laptop</a></li>
+                  <li class="mobile-nav-item"><a href="#">Monitor</a></li>
+                  <li class="mobile-nav-item"><a href="#">Mouse</a></li>
+                  <li class="mobile-nav-item"><a href="#">Phone</a></li>
+                  <li class="mobile-nav-item"><a href="#">Speaker</a></li>
+                  <li class="mobile-nav-item"><a href="#">Watch</a></li>
+                  <li class="mobile-nav-item"><a href="#" class="mobile-nav-viewall">View All</a></li>
+                </ul>
+              </div>
+              <div class="mobile-nav-panel" data-panel="pages">
+                <div class="mobile-nav-panel-header"><button type="button" class="mobile-nav-back"
+                    data-back>&#8249; Back</button></div>
+                <ul class="mobile-nav-list">
+                  <li class="mobile-nav-item"><a href="#">FAQ</a></li>
+                  <li class="mobile-nav-item"><a href="#">On Sale</a></li>
+                  <li class="mobile-nav-item"><a href="#">Privacy Policy</a></li>
+                  <li class="mobile-nav-item"><a href="#">Sign Up</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              var trigger = document.getElementById('mobileMenuTrigger');
+              var closeBtn = document.getElementById('mobileNavClose');
+              var overlay = document.getElementById('mobileNavOverlay');
+              var drawer = document.getElementById('mobileNavDrawer');
+              if (!trigger || !drawer) return;
+
+              var rootPanel = drawer.querySelector('[data-panel="root"]');
+
+              function resetPanels() {
+                drawer.querySelectorAll('.mobile-nav-panel').forEach(function (p) {
+                  p.classList.remove('is-active', 'is-leaving-left');
+                });
+              }
+
+              function goToPanel(target) {
+                var targetPanel = drawer.querySelector('[data-panel="' + target + '"]');
+                if (!targetPanel) return;
+                rootPanel.classList.add('is-leaving-left');
+                targetPanel.classList.add('is-active');
+              }
+
+              function goToRoot() {
+                drawer.querySelectorAll('.mobile-nav-panel.is-active').forEach(function (p) {
+                  p.classList.remove('is-active');
+                });
+                rootPanel.classList.remove('is-leaving-left');
+              }
+
+              function openDrawer() {
+                overlay.style.display = 'block';
+                drawer.style.display = 'block';
+                requestAnimationFrame(function () {
+                  overlay.classList.add('is-open');
+                  drawer.classList.add('is-open');
+                });
+                document.body.style.overflow = 'hidden';
+              }
+
+              function closeDrawer() {
+                overlay.classList.remove('is-open');
+                drawer.classList.remove('is-open');
+                document.body.style.overflow = '';
+                setTimeout(function () {
+                  overlay.style.display = 'none';
+                  drawer.style.display = 'none';
+                  resetPanels();
+                }, 350);
+              }
+
+              trigger.addEventListener('click', openDrawer);
+              closeBtn.addEventListener('click', closeDrawer);
+              overlay.addEventListener('click', closeDrawer);
+
+              drawer.querySelectorAll('[data-target]').forEach(function (item) {
+                item.addEventListener('click', function () {
+                  goToPanel(item.getAttribute('data-target'));
+                });
+              });
+
+              drawer.querySelectorAll('[data-back]').forEach(function (b) {
+                b.addEventListener('click', goToRoot);
+              });
+            });
+          </script>
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              var shopbyTrigger = document.querySelector('.shopby-trigger');
+
+              function fixShopbyDropdownWidth() {
+                document.querySelectorAll('.shopby-dropdown-body').forEach(function (body) {
+                  body.style.position = '';
+                  body.style.top = '';
+                  body.style.left = '';
+                  body.style.right = '';
+                  body.style.width = '';
+                  body.style.margin = '';
+                  var rect = body.getBoundingClientRect();
+                  if (!rect.width) return;
+                  var vw = document.documentElement.clientWidth;
+                  body.style.position = 'fixed';
+                  body.style.top = rect.top + 'px';
+                  body.style.left = '0';
+                  body.style.right = 'auto';
+                  body.style.width = vw + 'px';
+                  body.style.margin = '0';
+                });
+              }
+
+              if (shopbyTrigger) {
+                shopbyTrigger.addEventListener('mouseenter', function () {
+                  requestAnimationFrame(fixShopbyDropdownWidth);
+                });
+              }
+              window.addEventListener('resize', fixShopbyDropdownWidth);
+            });
+          </script>
           <div class="w-layout-hflex ecommerce-icons"><button type="button" class="search-icon-trigger"
               aria-haspopup="dialog" aria-label="Open search"
               onclick="document.getElementById('site-search-modal').classList.add('is-open');document.body.classList.add('search-modal-open');setTimeout(function(){var i=document.getElementById('site-search-input');if(i){i.focus();}},50);">
@@ -522,7 +883,16 @@
                 <circle cx="11" cy="11" r="7" />
                 <path d="m21 21-4.35-4.35" />
               </svg>
-            </button></div>
+            </button>
+            <button type="button" class="mobile-menu-trigger" id="mobileMenuTrigger" aria-label="Open menu">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -906,7 +1276,54 @@
           height: 18px
         }
 
-        @media (max-width:767px) {
+        #jwl-category-section .category-list-wrap {
+          position: relative;
+        }
+
+        #jwl-category-section .mobile-card-arrow {
+          display: none;
+        }
+
+        @media screen and (max-width:767px) {
+          #jwl-category-section .mobile-card-arrow,
+          #jwl-category-section .category-arrows {
+            display: none !important;
+          }
+        }
+
+        @media screen and (max-width:1150px) {
+          #jwl-category-section .category-link,
+          #jwl-category-section .category-link:hover,
+          #jwl-category-section .category-link:hover:not(.is-rightmost):not(:nth-child(4n)),
+          #jwl-category-section .category-link:hover:not(.is-rightmost):not(:nth-child(4n))+.category-link,
+          #jwl-category-section .category-link.is-rightmost:hover,
+          #jwl-category-section .category-link:nth-child(4n):hover,
+          #jwl-category-section .category-link:has(+ .category-link.is-rightmost:hover),
+          #jwl-category-section .category-link:has(+ .category-link:nth-child(4n):hover),
+          #jwl-category-section .category-link.is-prev-shrunken {
+            flex: 0 0 calc((100% - 60px) / 3) !important;
+            min-width: calc((100% - 60px) / 3) !important;
+            max-width: calc((100% - 60px) / 3) !important;
+          }
+        }
+
+        @media screen and (max-width:800px) {
+          #jwl-category-section .category-link,
+          #jwl-category-section .category-link:hover,
+          #jwl-category-section .category-link:hover:not(.is-rightmost):not(:nth-child(4n)),
+          #jwl-category-section .category-link:hover:not(.is-rightmost):not(:nth-child(4n))+.category-link,
+          #jwl-category-section .category-link.is-rightmost:hover,
+          #jwl-category-section .category-link:nth-child(4n):hover,
+          #jwl-category-section .category-link:has(+ .category-link.is-rightmost:hover),
+          #jwl-category-section .category-link:has(+ .category-link:nth-child(4n):hover),
+          #jwl-category-section .category-link.is-prev-shrunken {
+            flex: 0 0 calc((100% - 30px) / 2) !important;
+            min-width: calc((100% - 30px) / 2) !important;
+            max-width: calc((100% - 30px) / 2) !important;
+          }
+        }
+
+        @media (max-width:600px) {
           #jwl-category-section {
             padding: 60px 0
           }
@@ -915,12 +1332,18 @@
             font-size: 30px
           }
 
-          #jwl-category-section .category-link {
-            flex-basis: 78vw
-          }
-
-          #jwl-category-section .category-link:hover {
-            flex-basis: 78vw
+          #jwl-category-section .category-link,
+          #jwl-category-section .category-link:hover,
+          #jwl-category-section .category-link:hover:not(.is-rightmost):not(:nth-child(4n)),
+          #jwl-category-section .category-link:hover:not(.is-rightmost):not(:nth-child(4n))+.category-link,
+          #jwl-category-section .category-link.is-rightmost:hover,
+          #jwl-category-section .category-link:nth-child(4n):hover,
+          #jwl-category-section .category-link:has(+ .category-link.is-rightmost:hover),
+          #jwl-category-section .category-link:has(+ .category-link:nth-child(4n):hover),
+          #jwl-category-section .category-link.is-prev-shrunken {
+            flex: 0 0 64vw !important;
+            min-width: 64vw !important;
+            max-width: 64vw !important;
           }
 
           #jwl-category-section .category-image {
@@ -964,6 +1387,15 @@
                 </svg></button>
             </div>
           </div>
+          <div class="category-list-wrap">
+            <button type="button" class="mobile-card-arrow prev" aria-label="Previous"
+              onclick="(function(){var t=document.getElementById('jwl-category-track');var c=t.querySelector('.category-link');var step=c?c.getBoundingClientRect().width+30:400;t.scrollBy({left:-step,behavior:'smooth'});})()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="mobile-card-arrow next" aria-label="Next"
+              onclick="(function(){var t=document.getElementById('jwl-category-track');var c=t.querySelector('.category-link');var step=c?c.getBoundingClientRect().width+30:400;t.scrollBy({left:step,behavior:'smooth'});})()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
           <div class="category-list" id="jwl-category-track">
             <a href="#" class="category-link">
               <div class="category-img"><img class="category-image" loading="lazy" alt="Headphones"
@@ -1061,6 +1493,7 @@
                 <div class="secondary-btn white">Shop Now</div>
               </div>
             </a>
+          </div>
           </div>
         </div>
       </section>
@@ -1369,6 +1802,21 @@
         height: 18px;
       }
 
+      #home-blog-section .blog-track-wrap {
+        position: relative;
+      }
+
+      #home-blog-section .mobile-card-arrow {
+        display: none;
+      }
+
+      @media screen and (max-width: 600px) {
+        #home-blog-section .mobile-card-arrow,
+        #home-blog-section .blog-arrows {
+          display: none !important;
+        }
+      }
+
       #home-blog-section .blog-track {
         display: flex;
         gap: 28px;
@@ -1489,10 +1937,24 @@
           padding: 60px 0;
         }
 
+        #home-blog-section .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+
+        #home-blog-section .section-title {
+          font-size: 26px;
+        }
+
+        #home-blog-section .blog-arrows {
+          align-self: flex-start;
+        }
+
         #home-blog-section .blog-card {
-          flex-basis: 82vw;
-          min-width: 82vw;
-          max-width: 82vw;
+          flex-basis: 100%;
+          min-width: 100%;
+          max-width: 100%;
         }
       }
     </style>
@@ -1523,6 +1985,15 @@
           </div>
         </div>
 
+        <div class="blog-track-wrap">
+          <button type="button" class="mobile-card-arrow prev" aria-label="Previous"
+            onclick="(function(){var t=document.getElementById('home-blog-track');var c=t.querySelector('.blog-card');var step=c?c.getBoundingClientRect().width+28:360;t.scrollBy({left:-step,behavior:'smooth'});})()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button type="button" class="mobile-card-arrow next" aria-label="Next"
+            onclick="(function(){var t=document.getElementById('home-blog-track');var c=t.querySelector('.blog-card');var step=c?c.getBoundingClientRect().width+28:360;t.scrollBy({left:step,behavior:'smooth'});})()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
         <div class="blog-track" id="home-blog-track">
           <!-- Blog Card 1 -->
           <a href="#" class="blog-card">
@@ -1609,13 +2080,14 @@
             </div>
           </a>
         </div>
+        </div>
       </div>
     </section>
 
     <!-- OUR STORE LOCATIONS SECTION (imported from location.html) -->
     <style>
       .locations-import{
-        --loc-bg: #0a0a0a;
+        --loc-bg: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%);
         --loc-line: rgba(255,255,255,0.14);
         --loc-line-strong: rgba(255,255,255,0.28);
         --loc-text: #ffffff;
@@ -1804,6 +2276,63 @@
         </div>
       </div>
     </section>
+    <style>
+      .footer {
+        background: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%);
+      }
+
+    
+
+      .footer .footer-title {
+        color: #ffffff;
+      }
+
+      .footer .footer-paragraph {
+        color: rgba(255, 255, 255, 0.55);
+      }
+
+      .footer .footer-icon {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .footer .footer-links {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .footer .footer-links:hover {
+        color: var(--1-main-colors--primary, #1fa35b);
+      }
+
+      .footer .newsletter-input {
+        background-color: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.18);
+        color: #ffffff;
+      }
+
+      .footer .newsletter-input::placeholder {
+        color: rgba(255, 255, 255, 0.45);
+      }
+
+      .footer .footer-social-icon {
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .footer .footer-container {
+        border-top-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .footer .footer-copyright {
+        color: rgba(255, 255, 255, 0.55);
+      }
+
+      .footer .footer-link {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .footer .footer-link:hover {
+        color: var(--1-main-colors--primary, #1fa35b);
+      }
+    </style>
     <footer id="footer" class="footer">
       <div class="main-footer">
         <div class="container">

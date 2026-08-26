@@ -261,12 +261,12 @@ html, body, .page-wrapper, .section, .container, ._2-column-container {
   </style>
 
   <div class="ask-price-wrapper">
-    <div class="qty-stepper">
+    <div class="qty-stepper" id="product-qty-stepper">
       <button type="button" aria-label="Decrease quantity" onclick="(function(b){var i=b.parentElement.querySelector('input');var v=Math.max(1,(parseInt(i.value,10)||1)-1);i.value=v;})(this)">−</button>
-      <input type="number" value="1" min="1" aria-label="Quantity" oninput="if(this.value<1||this.value==='')this.value=1;" />
+      <input type="number" value="1" min="1" aria-label="Quantity" id="product-qty-input" oninput="if(this.value<1||this.value==='')this.value=1;" />
       <button type="button" aria-label="Increase quantity" onclick="(function(b){var i=b.parentElement.querySelector('input');var v=(parseInt(i.value,10)||1)+1;i.value=v;})(this)">+</button>
     </div>
-    <a href="#" class="primary-button w-inline-block">
+    <a href="#" class="primary-button w-inline-block" onclick="addCurrentProductToQuote();return false;">
 
       <div class="button-text-wrapper">
         <div class="default-text">Add to Quote</div>
@@ -275,6 +275,24 @@ html, body, .page-wrapper, .section, .container, ._2-column-container {
       <div class="button-bg-color"></div>
     </a>
   </div>
+  <script>
+    function addCurrentProductToQuote() {
+      var qty = parseInt(document.getElementById('product-qty-input').value, 10) || 1;
+      var item = {
+        id: 'NXCCTV10K8',
+        title: '4K CCTV Cam',
+        sku: 'NXCCTV10K8',
+        image: 'https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661922d2df2553a78d32bf91_wepik-export-20240408182823vadU.webp',
+        qty: qty
+      };
+      var cart = [];
+      try { cart = JSON.parse(localStorage.getItem('electroniczQuoteCart')) || []; } catch (e) { cart = []; }
+      var existing = cart.find(function (c) { return c.id === item.id; });
+      if (existing) { existing.qty += item.qty; } else { cart.push(item); }
+      localStorage.setItem('electroniczQuoteCart', JSON.stringify(cart));
+      window.location.href = 'quote.html';
+    }
+  </script>
 
   <div class="full-width-divider"></div>
 
@@ -847,6 +865,65 @@ html, body, .page-wrapper, .section, .container, ._2-column-container {
   </div>
 </section>
 
+<style>
+  .footer {
+    background: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%);
+  }
+
+  .footer .site-logo {
+    filter: brightness(0) invert(1);
+  }
+
+  .footer .footer-title {
+    color: #ffffff;
+  }
+
+  .footer .footer-paragraph {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .footer .footer-icon {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .footer .footer-links {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .footer .footer-links:hover {
+    color: var(--1-main-colors--primary, #1fa35b);
+  }
+
+  .footer .newsletter-input {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+  }
+
+  .footer .newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .footer .footer-social-icon {
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .footer .footer-container {
+    border-top-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .footer .footer-copyright {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .footer .footer-link {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .footer .footer-link:hover {
+    color: var(--1-main-colors--primary, #1fa35b);
+  }
+</style>
 <footer id="footer" class="footer">
       <div class="main-footer">
         <div class="container">
