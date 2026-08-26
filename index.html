@@ -52,6 +52,69 @@
       max-width: 100vw;
     }
 
+    /* Dark search modal */
+    .site-search-modal-overlay {
+      background: rgba(4, 12, 24, 0.65) !important;
+    }
+
+    .site-search-modal-panel {
+      background: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .site-search-modal-searchbar {
+      background: rgba(255, 255, 255, 0.06) !important;
+      border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    }
+
+    .site-search-modal-searchbar svg {
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
+
+    .site-search-modal-input {
+      background: transparent !important;
+      color: #ffffff !important;
+    }
+
+    .site-search-modal-input::placeholder {
+      color: rgba(255, 255, 255, 0.5) !important;
+    }
+
+    .site-search-modal-close {
+      color: #ffffff !important;
+    }
+
+    .site-search-modal-tag {
+      background: transparent !important;
+      border: 1px solid rgba(255, 255, 255, 0.24) !important;
+      color: #ffffff !important;
+    }
+
+    .site-search-product-card {
+      background: rgba(255, 255, 255, 0.04) !important;
+      border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    }
+
+    .site-search-product-card:hover {
+      border-color: var(--1-main-colors--primary, #1fa35b) !important;
+    }
+
+    .site-search-product-image {
+      background: rgba(255, 255, 255, 0.06) !important;
+    }
+
+    .site-search-product-name {
+      color: #ffffff !important;
+    }
+
+    .site-search-product-desc {
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
+
+    .site-search-price-was {
+      color: rgba(255, 255, 255, 0.4) !important;
+    }
+
     .header-wrapper {
       overflow: visible
     }
@@ -261,7 +324,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: center;
       width: 100%;
       aspect-ratio: 1 / 1;
       text-decoration: none;
@@ -296,7 +359,8 @@
     .shopby-item:hover .shopby-name {
       opacity: 1;
       max-height: 20px;
-      margin-top: 10px
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
 
     .shopby-item:hover .shopby-circle{
