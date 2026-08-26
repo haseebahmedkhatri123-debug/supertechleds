@@ -1,0 +1,45 @@
+/* ===== Glancyr (local, manual @font-face) — used for all titles/headings ===== */
+@font-face{font-family:'Glancyr';src:url('../../fonts/ttf/glancyr-glancyr-thin-200.ttf') format('truetype');font-weight:100;font-style:normal;font-display:swap;}
+@font-face{font-family:'Glancyr';src:url('../../fonts/ttf/glancyr-glancyr-extra-light-100.ttf') format('truetype');font-weight:200;font-style:normal;font-display:swap;}
+@font-face{font-family:'Glancyr';src:url('../../fonts/ttf/glancyr-glancyr-light-200.ttf') format('truetype');font-weight:300;font-style:normal;font-display:swap;}
+@font-face{font-family:'Glancyr';src:url('../../fonts/ttf/glancyr-glancyr-regular-400.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Glancyr';src:url('../../fonts/ttf/glancyr-glancyr-medium-500.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'Glancyr';src:url('../../fonts/ttf/glancyr-glancyr-semibold-600.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap;}
+@font-face{font-family:'Glancyr';src:url('../../fonts/ttf/glancyr-glancyr-bold-700.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap;}
+
+@font-face{font-family:'Glancyr';src:url('../../fonts/ttf/glancyr-glancyr-extra-light-italic-100.ttf') format('truetype');font-weight:200;font-style:italic;font-display:swap;}
+@font-face{font-family:'Glancyr';src:url('../../fonts/ttf/glancyr-glancyr-light-italic-200.ttf') format('truetype');font-weight:300;font-style:italic;font-display:swap;}
+@font-face{font-family:'Glancyr';src:url('../../fonts/ttf/glancyr-glancyr-regular-italic-400.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap;}
+@font-face{font-family:'Glancyr';src:url('../../fonts/ttf/glancyr-glancyr-medium-italic-500.ttf') format('truetype');font-weight:500;font-style:italic;font-display:swap;}
+@font-face{font-family:'Glancyr';src:url('../../fonts/ttf/glancyr-glancyr-semibold-italic-600.ttf') format('truetype');font-weight:600;font-style:italic;font-display:swap;}
+@font-face{font-family:'Glancyr';src:url('../../fonts/ttf/glancyr-glancyr-bold-italic-700.ttf') format('truetype');font-weight:700;font-style:italic;font-display:swap;}
+
+/* ===== Global font system override =====
+   IBM Plex Sans (Google Fonts, linked in <head>) for all descriptive/body content.
+   Glancyr for every heading (h1-h6) and any element whose class implies a "title".
+   Icon classes (containing "icon") are excluded so icon-font ligatures keep rendering. */
+
+body,
+p,
+span:not([class*="icon"]),
+div:not([class*="icon"]):not([class*="title" i]),
+li,
+td,
+th,
+label,
+input,
+textarea,
+button,
+a:not([class*="icon"]):not([class*="title" i]) {
+  font-family: 'IBM Plex Sans', Arial, sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+[class*="title" i] {
+  font-family: 'Glancyr', Georgia, serif !important;
+}
