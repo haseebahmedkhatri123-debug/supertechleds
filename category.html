@@ -57,6 +57,15 @@
       overflow-x: hidden;
     }
 
+    #webflow-badge,
+    .w-webflow-badge {
+      display: none !important;
+    }
+
+    .star-wrapper {
+      display: none !important;
+    }
+
     .header-wrapper {
       overflow: visible
     }
@@ -837,7 +846,7 @@
             font-size: 13.5px;
           }
 
-          @media screen and (max-width: 767px) {
+          @media screen and (max-width: 800px) {
             .audio-hero-banner {
               flex-direction: column;
             }
@@ -858,11 +867,32 @@
             }
 
             .audio-hero-banner {
-              padding: 24px;
+              padding: 0;
+            }
+
+            .dark-breadcrumb-row {
+              flex-wrap: wrap;
+              row-gap: 8px;
+              margin-bottom: 18px;
+              padding-bottom: 14px;
+            }
+
+            .dark-breadcrumb-block a.breadcrumb,
+            .dark-breadcrumb-block .breadcrumb.active,
+            .dark-breadcrumb-block .breadcrumb-inliner {
+              font-size: 12.5px;
+            }
+
+            .dark-breadcrumb-row .breadcrumb-view-all {
+              font-size: 12.5px;
+            }
+
+            .promo-category-title {
+              font-size: 24px !important;
             }
           }
         </style>
-        <div class="mobile-banner audio-hero-banner">
+        <div class="audio-hero-banner">
           <div class="audio-hero-text-panel">
             <div class="dark-breadcrumb-row">
               <div class="breadcrumb-block dark-breadcrumb-block"><a href="#" class="breadcrumb">Home</a><div class="breadcrumb-inliner"></div><a href="#" class="breadcrumb">Shop</a><div class="breadcrumb-inliner"></div><div class="breadcrumb active">Audio Accessories</div></div>
@@ -1272,15 +1302,118 @@
         box-shadow: 0 0 0 2px var(--1-main-colors--primary, #1fa35b);
       }
 
+      .cat-mobile-filter-bar {
+        display: none;
+      }
+
+      .cat-filter-overlay {
+        display: none;
+      }
+
+      .cat-sidebar-close {
+        display: none;
+      }
+
       @media screen and (max-width: 991px) {
-        .cat-sidebar {
-          flex: 0 0 100%;
-          max-width: 100%;
-          margin-bottom: 20px;
+        ._4-column-grid {
+          grid-template-columns: repeat(3, 1fr) !important;
+          place-items: stretch !important;
+        }
+
+        .w-dyn-item,
+        .product-card {
+          width: 100%;
         }
 
         .container._2-column-container {
           flex-wrap: wrap;
+        }
+
+        .cat-sidebar {
+          display: none;
+        }
+
+        .cat-mobile-filter-bar {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 14px;
+          font-weight: 700;
+          color: #14142b;
+          cursor: pointer;
+        }
+
+        .cat-mobile-filter-bar svg {
+          width: 16px;
+          height: 16px;
+        }
+
+        .cat-results-count {
+          margin-left: auto;
+        }
+
+        .cat-filter-overlay.is-open {
+          display: block;
+          position: fixed;
+          inset: 0;
+          background: rgba(4, 12, 24, 0.55);
+          z-index: 600;
+        }
+
+        .cat-sidebar.is-drawer-open {
+          display: block;
+          position: fixed;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: auto;
+          z-index: 601;
+          max-width: 100%;
+          max-height: 82vh;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          animation: catDrawerUp .3s ease;
+        }
+
+        .cat-sidebar.is-drawer-open .cat-sidebar-panel {
+          border-radius: 20px 20px 0 0;
+          border-bottom: none;
+          padding-bottom: 90px;
+        }
+
+        .cat-sidebar-close {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: #f2f2f2;
+          border: none;
+          color: #14142b;
+          cursor: pointer;
+        }
+
+        @keyframes catDrawerUp {
+          from {
+            transform: translateY(100%);
+          }
+
+          to {
+            transform: translateY(0);
+          }
+        }
+      }
+
+      @media screen and (max-width: 767px) {
+        ._4-column-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+          place-items: stretch !important;
+        }
+
+        .w-dyn-item,
+        .product-card {
+          width: 100%;
         }
       }
     </style>
@@ -1290,7 +1423,16 @@
           <div class="cat-sidebar-panel">
             <div class="cat-sidebar-head">
               <h3>Filters</h3>
-              <button type="button" class="cat-sidebar-clear" id="cat-clear-filters">Clear All</button>
+              <div style="display:flex;align-items:center;gap:14px;margin-left:auto;">
+                <button type="button" class="cat-sidebar-clear" id="cat-clear-filters">Clear All</button>
+                <button type="button" class="cat-sidebar-close" id="cat-sidebar-close" aria-label="Close filters">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="4" x2="20" y2="20" />
+                    <line x1="20" y1="4" x2="4" y2="20" />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             <div class="cat-filter-group">
@@ -1337,6 +1479,31 @@
             </div>
           </div>
         </div>
+        <div class="cat-filter-overlay" id="cat-filter-overlay"></div>
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            var sidebar = document.querySelector('.cat-sidebar');
+            var overlay = document.getElementById('cat-filter-overlay');
+            var openBtn = document.getElementById('cat-mobile-filter-bar');
+            var closeBtn = document.getElementById('cat-sidebar-close');
+
+            function openFilterDrawer() {
+              sidebar.classList.add('is-drawer-open');
+              overlay.classList.add('is-open');
+              document.body.style.overflow = 'hidden';
+            }
+
+            function closeFilterDrawer() {
+              sidebar.classList.remove('is-drawer-open');
+              overlay.classList.remove('is-open');
+              document.body.style.overflow = '';
+            }
+
+            if (openBtn) openBtn.addEventListener('click', openFilterDrawer);
+            if (closeBtn) closeBtn.addEventListener('click', closeFilterDrawer);
+            if (overlay) overlay.addEventListener('click', closeFilterDrawer);
+          });
+        </script>
         <script>
           (function () {
             document.querySelectorAll('.cat-filter-check-row, .cat-size-pill, .cat-color-swatch').forEach(function (el) {
@@ -1386,6 +1553,15 @@
           <div class="relative-block">
             <div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="w-tabs">
               <div class="shop-bar w-tab-menu">
+                <div class="cat-mobile-filter-bar" id="cat-mobile-filter-bar">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="4" y1="6" x2="20" y2="6" />
+                    <line x1="7" y1="12" x2="17" y2="12" />
+                    <line x1="10" y1="18" x2="14" y2="18" />
+                  </svg>
+                  <span>Show Filter</span>
+                </div>
                 <div class="cat-results-count"><strong>4</strong> Products Found</div>
                 <div class="cat-results-right">
                   <div class="cat-perpage">Show : <button type="button" class="" data-per-page="9">9</button> / <button
@@ -2317,10 +2493,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div data-w-id="b2aae873-39a3-a99b-4797-7494e6ece1c8" class="show-filter-block">
-              <div class="_20px-icon">filter_alt</div>
-              <div>Show Filter</div>
             </div>
           </div>
         </div>
