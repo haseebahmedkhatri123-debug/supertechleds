@@ -96,7 +96,7 @@
     }
 
     .site-search-product-card:hover {
-      border-color: var(--1-main-colors--primary, #08AC4B) !important;
+      border-color: var(--1-main-colors--primary, #1fa35b) !important;
     }
 
     .site-search-product-image {
@@ -241,7 +241,7 @@
 
     .top-navigation .nav-link:hover,
     .top-navigation .nav-link.w--current {
-      color: var(--1-main-colors--primary, #08AC4B);
+      color: var(--1-main-colors--primary, #1fa35b);
     }
 
     .top-navigation .nav-dropdown-toggle {
@@ -249,7 +249,7 @@
     }
 
     .top-navigation .nav-dropdown-toggle:hover {
-      color: var(--1-main-colors--primary, #08AC4B);
+      color: var(--1-main-colors--primary, #1fa35b);
     }
 
     .top-navigation ._1px-width-divider {
@@ -270,12 +270,12 @@
     }
 
     .shopby-dropdown-list {
-      position: absolute !important;
+      position: fixed !important;
       display: none;
-      top: 100%;
-      padding-top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      transform: none !important;
       z-index: 1000
     }
 
@@ -288,12 +288,12 @@
     .shopby-dropdown-body {
           opacity: 1 !important;
     position: relative !important;
-    left: 36% !important;
-    top: 40% !important;
+    left: auto !important;
+    top: 0 !important;
 
-    margin-left: -50vw !important;
-    margin-right: -50vw !important;
-    width: 100vw !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
     padding: 40px 0 44px;
     background: linear-gradient(135deg, #123457 0%, #0a2340 55%, #081b32 100%);
     border: none;
@@ -329,7 +329,7 @@
     .shopby-header .shopby-viewall {
       font-size: 13px;
       font-weight: 600;
-      color: var(--1-main-colors--primary, #08AC4B);
+      color: var(--1-main-colors--primary, #1fa35b);
       text-decoration: underline;
       text-underline-offset: 3px
     }
@@ -361,7 +361,7 @@
 
     .shopby-item:hover {
       z-index: 5;
-      border-color: var(--1-main-colors--primary, #08AC4B);
+      border-color: var(--1-main-colors--primary, #1fa35b);
       background: rgba(31, 163, 91, 0.08);
     }
 
@@ -594,7 +594,7 @@
     }
 
     .mobile-nav-back:hover {
-      color: var(--1-main-colors--primary, #08AC4B);
+      color: var(--1-main-colors--primary, #1fa35b);
     }
 
 
@@ -633,7 +633,7 @@
 
     .mobile-nav-item:hover,
     .mobile-nav-item a:hover {
-      color: var(--1-main-colors--primary, #08AC4B);
+      color: var(--1-main-colors--primary, #1fa35b);
     }
 
     .mobile-nav-chevron {
@@ -648,7 +648,7 @@
     }
 
     .mobile-nav-viewall {
-      color: var(--1-main-colors--primary, #08AC4B) !important;
+      color: var(--1-main-colors--primary, #1fa35b) !important;
     }
 
   </style>
@@ -687,7 +687,7 @@
               <path d="M4 4h16v16H4z" opacity="0" />
               <path d="m4 6 8 7 8-7" />
               <rect x="3" y="5" width="18" height="14" rx="2" />
-            </svg><span>support@supertechleds.com</span></a>
+            </svg><span>support@electronicz-nx.com</span></a>
           <a href="#" class="utility-contact-link"><svg width="14" height="14" viewBox="0 0 24 24"
               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path
@@ -932,33 +932,21 @@
           <script>
             document.addEventListener('DOMContentLoaded', function () {
               var shopbyTrigger = document.querySelector('.shopby-trigger');
+              var shopbyList = document.querySelector('.shopby-dropdown-list');
 
-              function fixShopbyDropdownWidth() {
-                document.querySelectorAll('.shopby-dropdown-body').forEach(function (body) {
-                  body.style.position = '';
-                  body.style.top = '';
-                  body.style.left = '';
-                  body.style.right = '';
-                  body.style.width = '';
-                  body.style.margin = '';
-                  var rect = body.getBoundingClientRect();
-                  if (!rect.width) return;
-                  var vw = document.documentElement.clientWidth;
-                  body.style.position = 'fixed';
-                  body.style.top = rect.top + 'px';
-                  body.style.left = '0';
-                  body.style.right = 'auto';
-                  body.style.width = vw + 'px';
-                  body.style.margin = '0';
-                });
+              function positionShopbyDropdown() {
+                if (!shopbyTrigger || !shopbyList) return;
+                var rect = shopbyTrigger.getBoundingClientRect();
+                shopbyList.style.top = rect.bottom + 'px';
               }
 
               if (shopbyTrigger) {
                 shopbyTrigger.addEventListener('mouseenter', function () {
-                  requestAnimationFrame(fixShopbyDropdownWidth);
+                  requestAnimationFrame(positionShopbyDropdown);
                 });
               }
-              window.addEventListener('resize', fixShopbyDropdownWidth);
+              window.addEventListener('scroll', positionShopbyDropdown, { passive: true });
+              window.addEventListener('resize', positionShopbyDropdown);
             });
           </script>
           <div class="w-layout-hflex ecommerce-icons"><button type="button" class="search-icon-trigger"
@@ -983,152 +971,318 @@
       </div>
     </section>
     <div class="page-wrapper">
-      <section class="section">
-        <div class="container">
-          <div data-delay="4000" data-animation="cross" class="hero-slider w-slider" data-autoplay="true"
-            data-easing="ease-out-quart" data-hide-arrows="true" data-disable-swipe="false" data-autoplay-limit="0"
-            data-nav-spacing="3" data-duration="1000" data-infinite="true">
-            <div class="w-slider-mask">
-              <div class="hero-slide w-slide">
-                <div class="w-dyn-list">
-                  <div role="list" class="w-dyn-items">
-                    <div role="listitem" class="w-dyn-item">
-                      <div class="hero-block">
-                        <div class="hero-contents">
-                          <h1 class="hero-title-60px">Brightening Your World with Innovation</h1>
-                          <div class="hero-buttons-wraper"><a href="#" class="primary-button w-inline-block">
-                              <div class="button-text-wrapper">
-                                <div class="default-text">View Products</div>
-                                <div class="hover-text white">View Products</div>
-                              </div>
-                              <div class="button-bg-color"></div>
-                            </a></div>
-                        </div>
-                        <div class="image-wrapper"><img loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661929ad5ba11384a4deb68a_wepik-export-2024040817423606Qx.webp"
-                            alt=""
-                            sizes="(max-width: 479px) 100vw, (max-width: 767px) 86vw, (max-width: 991px) 550px, 43vw"
-                            srcset="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661929ad5ba11384a4deb68a_wepik-export-2024040817423606Qx-p-500.webp 500w, https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661929ad5ba11384a4deb68a_wepik-export-2024040817423606Qx-p-800.webp 800w, https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661929ad5ba11384a4deb68a_wepik-export-2024040817423606Qx-p-1080.webp 1080w, https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661929ad5ba11384a4deb68a_wepik-export-2024040817423606Qx-p-1600.webp 1600w, https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661929ad5ba11384a4deb68a_wepik-export-2024040817423606Qx-p-2000.webp 2000w, https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661929ad5ba11384a4deb68a_wepik-export-2024040817423606Qx-p-2600.webp 2600w, https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661929ad5ba11384a4deb68a_wepik-export-2024040817423606Qx.webp 3012w"
-                            class="hero-image" />
-                          <div class="price-tag-wrapper">
-                            <div class="price-tag-block">
-                              <div class="price-tag">
-                                <div
-                                  data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_price_%22%2C%22to%22%3A%22innerHTML%22%7D%5D"
-                                  class="price-white">$ 120.00 USD</div>
-                              </div>
-                              <div class="price-border"></div>
-                              <div class="ping-circle"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="hero-slide w-slide">
-                <div class="w-dyn-list">
-                  <div role="list" class="w-dyn-items">
-                    <div role="listitem" class="w-dyn-item">
-                      <div class="hero-block">
-                        <div class="hero-contents">
-                          <h1 class="hero-title-60px">Brightening Your World with Innovation</h1>
-                          <div class="hero-buttons-wraper"><a href="#" class="primary-button w-inline-block">
-                              <div class="button-text-wrapper">
-                                <div class="default-text">View Products</div>
-                                <div class="hover-text white">View Products</div>
-                              </div>
-                              <div class="button-bg-color"></div>
-                            </a></div>
-                        </div>
-                        <div class="image-wrapper"><img loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661ea68abba9f469698e0800_wepik-export-20240416160349yBhu (1).webp"
-                            alt=""
-                            sizes="(max-width: 479px) 100vw, (max-width: 767px) 86vw, (max-width: 991px) 550px, 43vw"
-                            srcset="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661ea68abba9f469698e0800_wepik-export-20240416160349yBhu%20(1)-p-500.webp 500w, https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661ea68abba9f469698e0800_wepik-export-20240416160349yBhu%20(1)-p-800.webp 800w, https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661ea68abba9f469698e0800_wepik-export-20240416160349yBhu%20(1)-p-1080.webp 1080w, https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661ea68abba9f469698e0800_wepik-export-20240416160349yBhu%20(1)-p-1600.webp 1600w, https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661ea68abba9f469698e0800_wepik-export-20240416160349yBhu%20(1).webp 1846w"
-                            class="hero-image" />
-                          <div class="price-tag-wrapper">
-                            <div class="price-tag-block">
-                              <div class="price-tag">
-                                <div
-                                  data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_price_%22%2C%22to%22%3A%22innerHTML%22%7D%5D"
-                                  class="price-white">$ 100.00 USD</div>
-                              </div>
-                              <div class="price-border"></div>
-                              <div class="ping-circle"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="hero-slide w-slide">
-                <div class="w-dyn-list">
-                  <div role="list" class="w-dyn-items">
-                    <div role="listitem" class="w-dyn-item">
-                      <div class="hero-block">
-                        <div class="hero-contents">
-                          <h1 class="hero-title-60px">Brightening Your World with Innovation</h1>
-                          <div class="hero-buttons-wraper"><a href="#" class="primary-button w-inline-block">
-                              <div class="button-text-wrapper">
-                                <div class="default-text">View Products</div>
-                                <div class="hover-text white">View Products</div>
-                              </div>
-                              <div class="button-bg-color"></div>
-                            </a></div>
-                        </div>
-                        <div class="image-wrapper"><img loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6614f0cb0c96220c7026b096_wepik-export-20240408173119hqvi.webp"
-                            alt=""
-                            sizes="(max-width: 479px) 100vw, (max-width: 767px) 86vw, (max-width: 991px) 550px, 43vw"
-                            srcset="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6614f0cb0c96220c7026b096_wepik-export-20240408173119hqvi-p-500.webp 500w, https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6614f0cb0c96220c7026b096_wepik-export-20240408173119hqvi-p-800.webp 800w, https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6614f0cb0c96220c7026b096_wepik-export-20240408173119hqvi-p-1080.webp 1080w, https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6614f0cb0c96220c7026b096_wepik-export-20240408173119hqvi-p-1600.webp 1600w, https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/6614f0cb0c96220c7026b096_wepik-export-20240408173119hqvi.webp 2543w"
-                            class="hero-image" />
-                          <div class="price-tag-wrapper">
-                            <div class="price-tag-block">
-                              <div class="price-tag">
-                                <div
-                                  data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_price_%22%2C%22to%22%3A%22innerHTML%22%7D%5D"
-                                  class="price-white">$ 150.00 USD</div>
-                              </div>
-                              <div class="price-border"></div>
-                              <div class="ping-circle"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="hidden w-slider-arrow-left"></div>
-            <div class="hidden w-slider-arrow-right"></div>
-            <div class="slide-nav-transparent w-slider-nav"></div>
-          </div>
-          <div class="testimonial-slider-nav-style-css w-embed">
-            <style>
-              .w-slider-dot {
-                background: var(--1-main-colors--border);
-                border-radius: 20px;
-                transition: width .4s ease-out, background-color .5s ease;
+      <style>
+/* FULL BLEED HERO SLIDER & TRANSPARENT HEADER MATCHING IMAGE 2 */
+.header-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: transparent !important;
+}
 
-              }
+.utility-topbar {
+  background: rgba(0, 0, 0, 0.45) !important;
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-              .w-slider-dot.w-active {
-                background: var(--1-main-colors--primary);
-                width: 50px;
-                border-radius: 20px;
-              }
-            </style>
-          </div>
+.top-navigation {
+  background: transparent !important;
+  position: absolute;
+  z-index: 9999;
+  top: 50px;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.top-navigation > .container,
+.top-navigation nav.container {
+  width: 100% !important;
+  max-width: 1440px !important;
+  min-width: 0 !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+}
+
+.hero-slider-section {
+  position: relative;
+  width: 100%;
+  min-height: 720px;
+  overflow: hidden;
+  background-color: #0b131e;
+}
+
+.hero-slider-container {
+  position: relative;
+  width: 100%;
+  height: 720px;
+}
+
+.stl-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+}
+
+.stl-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+.stl-slide-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.04);
+  transition: transform 6s ease;
+}
+
+.stl-slide.active .stl-slide-bg {
+  transform: scale(1.0);
+}
+
+.stl-slide-overlay {
+  position: absolute;
+  inset: 0;
+  /* background: linear-gradient(90deg, rgba(8, 14, 24, 0.88) 0%, rgba(8, 14, 24, 0.55) 55%, rgba(8, 14, 24, 0.25) 100%); */
+  z-index: 1;
+}
+
+.stl-slide-content {
+  position: relative;
+  z-index: 5;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 150px 20px 60px;
+  box-sizing: border-box;
+}
+
+.stl-slide-content > * {
+  max-width: 620px;
+}
+
+.stl-hero-btn-new {
+  display: inline-flex !important;
+  width: auto !important;
+  flex: 0 0 auto;
+  margin-bottom: 40px;
+}
+
+.stl-hero-title {
+  font-family: "Glancyr", Arial, sans-serif;
+  font-size: 68px;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+.stl-title-green {
+  color: var(--1-main-colors--primary, #1fa35b);
+}
+
+.stl-title-white {
+  color: #ffffff;
+  font-family: 'Glancyr', Georgia, serif;
+}
+
+.stl-hero-tags {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  opacity: 0.95;
+}
+
+.stl-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--1-main-colors--primary, #1fa35b);
+  color: #ffffff;
+  padding: 15px 36px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(31, 163, 91, 0.35);
+  margin-bottom: 40px;
+}
+
+.stl-hero-btn:hover {
+  background: #178a49;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(31, 163, 91, 0.5);
+}
+
+
+
+.stl-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--1-main-colors--primary, #1fa35b);
+  box-shadow: 0 0 10px var(--1-main-colors--primary, #1fa35b);
+}
+
+.stl-dots-wrapper {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stl-dot {
+  height: 6px;
+  width: 22px;
+  border-radius: 10px;
+  background: #ffffff;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.stl-dot.active {
+  width: 38px;
+  background: var(--1-main-colors--primary, #1fa35b);
+  opacity: 1;
+}
+
+@media screen and (max-width: 991px) {
+  .hero-slider-section, .hero-slider-container {
+    min-height: 620px;
+    height: 620px;
+  }
+  .stl-slide-content {
+    padding-top: 140px;
+  }
+  .stl-hero-title {
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hero-slider-section, .hero-slider-container {
+    min-height: 540px;
+    height: 540px;
+  }
+  .stl-slide-content {
+    padding-top: 130px;
+  }
+  .stl-hero-title {
+    font-size: 34px;
+  }
+  .stl-hero-tags {
+    font-size: 13px;
+  }
+}
+</style>
+
+<section class="hero-slider-section">
+  <div class="hero-slider-container" id="stl-hero-slider">
+    <!-- Slide 1 -->
+    <div class="stl-slide active">
+      <img src="./assets/images/slider image.jpeg" alt="SuperTech LED Lighting" class="stl-slide-bg" />
+      <div class="stl-slide-overlay"></div>
+      <div class="stl-slide-content">
+        <div class="stl-hero-title">
+          <span class="stl-title-white">Brightening Your World with Innovation</span><br>
         </div>
-      </section>
+        <div class="stl-hero-tags">SHOEBOX | WALLPACK | DOWNLIGHT | STRIPLIGHT</div>
+        <a href="shop.html" class="primary-button w-inline-block stl-hero-btn-new"><div class="button-text-wrapper"><div class="default-text">Talk To An Expert</div><div class="hover-text white">Talk To An Expert</div></div><div class="button-bg-color"></div></a>
+        
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="stl-slide">
+      <img src="./assets/images/slider image 2.jpeg" alt="Commercial LED Solutions" class="stl-slide-bg" />
+      <div class="stl-slide-overlay"></div>
+      <div class="stl-slide-content">
+        <div class="stl-hero-title">
+          <span class="stl-title-white">Brightening Your World with Innovation</span><br>
+          
+        </div>
+        <div class="stl-hero-tags">SHOEBOX | WALLPACK | DOWNLIGHT | STRIPLIGHT</div>
+        <a href="shop.html" class="primary-button w-inline-block stl-hero-btn-new"><div class="button-text-wrapper"><div class="default-text">Talk To An Expert</div><div class="hover-text white">Talk To An Expert</div></div><div class="button-bg-color"></div></a>
+      
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="stl-slide">
+      <img src="./assets/images/slider image 3.jpeg" alt="Industrial LED Fixtures" class="stl-slide-bg" />
+      <div class="stl-slide-overlay"></div>
+      <div class="stl-slide-content">
+        <div class="stl-hero-title">
+          <span class="stl-title-white">Brightening Your World with Innovation</span><br>
+        </div>
+        <a href="shop.html" class="primary-button w-inline-block stl-hero-btn-new"><div class="button-text-wrapper"><div class="default-text">Talk To An Expert</div><div class="hover-text white">Talk To An Expert</div></div><div class="button-bg-color"></div></a>
+        
+      </div>
+    </div>
+
+    <!-- Dots Navigation -->
+    <div class="stl-dots-wrapper" id="stl-slider-dots">
+      <span class="stl-dot active" onclick="stlGoToSlide(0)"></span>
+      <span class="stl-dot" onclick="stlGoToSlide(1)"></span>
+      <span class="stl-dot" onclick="stlGoToSlide(2)"></span>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var slides = document.querySelectorAll('#stl-hero-slider .stl-slide');
+  var dots = document.querySelectorAll('#stl-slider-dots .stl-dot');
+  var current = 0;
+  var timer = null;
+
+  window.stlGoToSlide = function(index) {
+    if (index === current) return;
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    resetTimer();
+  };
+
+  function nextSlide() {
+    stlGoToSlide(current + 1);
+  }
+
+  function resetTimer() {
+    if (timer) clearInterval(timer);
+    timer = setInterval(nextSlide, 5000);
+  }
+
+  resetTimer();
+})();
+</script>
 
       <style>
         #jwl-category-section {
@@ -1158,7 +1312,7 @@
           font-weight: 700;
           letter-spacing: .06em;
           text-transform: uppercase;
-          color: var(--1-main-colors--primary, #08AC4B);
+          color: var(--1-main-colors--primary, #1fa35b);
           margin-bottom: 10px
         }
 
@@ -1454,7 +1608,7 @@
           <div class="section-title">
             <div>
               <div class="sub-heading">EXPLORE CATEGORIES</div>
-              <h2 class="title">Shop By <span style="color: var(--1-main-colors--primary, #08AC4B);">Category</span>
+              <h2 class="title">Shop By <span style="color: var(--1-main-colors--primary, #1fa35b);">Category</span>
               </h2>
             </div>
             <div class="category-arrows">
@@ -1488,10 +1642,10 @@
               </div>
               <div class="category-data">
                 <div>
-                  <h4 class="category-name">Linear Fixtures</h4>
+                  <h4 class="category-name">Headphones</h4>
                   <div class="category-count">18 Products</div>
                 </div>
-                <div class="secondary-btn white">Explore Now</div>
+                <div class="secondary-btn white">Shop Now</div>
               </div>
             </a>
             <a href="#" class="category-link">
@@ -1500,10 +1654,10 @@
               </div>
               <div class="category-data">
                 <div>
-                  <h4 class="category-name">Surface Mount Kit</h4>
+                  <h4 class="category-name">Cameras</h4>
                   <div class="category-count">14 Products</div>
                 </div>
-                <div class="secondary-btn white">Explore Now</div>
+                <div class="secondary-btn white">Shop Now</div>
               </div>
             </a>
             <a href="#" class="category-link">
@@ -1512,10 +1666,10 @@
               </div>
               <div class="category-data">
                 <div>
-                  <h4 class="category-name">Lay In Lighting</h4>
+                  <h4 class="category-name">Speakers</h4>
                   <div class="category-count">12 Products</div>
                 </div>
-                <div class="secondary-btn white">Explore Now</div>
+                <div class="secondary-btn white">Shop Now</div>
               </div>
             </a>
             <a href="#" class="category-link">
@@ -1524,10 +1678,10 @@
               </div>
               <div class="category-data">
                 <div>
-                  <h4 class="category-name">Downlights</h4>
+                  <h4 class="category-name">Smart Watches</h4>
                   <div class="category-count">20 Products</div>
                 </div>
-                <div class="secondary-btn white">Explore Now</div>
+                <div class="secondary-btn white">Shop Now</div>
               </div>
             </a>
             <a href="#" class="category-link">
@@ -1536,22 +1690,22 @@
               </div>
               <div class="category-data">
                 <div>
-                  <h4 class="category-name">Canless Spot Lights</h4>
+                  <h4 class="category-name">Laptops</h4>
                   <div class="category-count">16 Products</div>
                 </div>
-                <div class="secondary-btn white">Explore Now</div>
+                <div class="secondary-btn white">Shop Now</div>
               </div>
             </a>
             <a href="#" class="category-link">
               <div class="category-img"><img class="category-image" loading="lazy" alt="Keyboards"
-                  src="assets/images/Bathroom Category light.webp" />
+                  src="./assets/images/application-image-01.webp 2.webp" />
               </div>
               <div class="category-data">
                 <div>
-                  <h4 class="category-name">Wall Mounted Lights</h4>
+                  <h4 class="category-name">Keyboards</h4>
                   <div class="category-count">15 Products</div>
                 </div>
-                <div class="secondary-btn white">Explore Now</div>
+                <div class="secondary-btn white">Shop Now</div>
               </div>
             </a>
             <a href="#" class="category-link">
@@ -1560,10 +1714,10 @@
               </div>
               <div class="category-data">
                 <div>
-                  <h4 class="category-name">Downlights</h4>
+                  <h4 class="category-name">Earbuds</h4>
                   <div class="category-count">22 Products</div>
                 </div>
-                <div class="secondary-btn white">Explore Now</div>
+                <div class="secondary-btn white">Shop Now</div>
               </div>
             </a>
             <a href="#" class="category-link">
@@ -1572,10 +1726,10 @@
               </div>
               <div class="category-data">
                 <div>
-                  <h4 class="category-name">Panel Lights</h4>
+                  <h4 class="category-name">Gaming Joysticks</h4>
                   <div class="category-count">10 Products</div>
                 </div>
-                <div class="secondary-btn white">Explore Now</div>
+                <div class="secondary-btn white">Shop Now</div>
               </div>
             </a>
           </div>
@@ -1683,7 +1837,7 @@
 }
 
 #dual-promo-section .promo-card:hover .promo-btn {
-  background: var(--1-main-colors--primary, #08AC4B);
+  background: var(--1-main-colors--primary, #1fa35b);
   color: #ffffff;
   transform: translateX(4px);
 }
@@ -1723,8 +1877,8 @@
           <h2 class="promo-title">Take our best <br>ideas with you.</h2>
           <div class="primary-button w-inline-block">
             <div class="button-text-wrapper">
-              <div class="default-text">View Catalog</div>
-              <div class="hover-text white">View Catalog</div>
+              <div class="default-text">View Now</div>
+              <div class="hover-text white">View Now</div>
             </div>
             <div class="button-bg-color"></div>
           </div>
@@ -1739,8 +1893,8 @@
           <h2 class="promo-title">Grab The Latest<br>Smart Watches & Gear</h2>
           <div class="primary-button w-inline-block">
             <div class="button-text-wrapper">
-              <div class="default-text">View Catalog</div>
-              <div class="hover-text white">View Catalog</div>
+              <div class="default-text">View Now</div>
+              <div class="hover-text white">View Now</div>
             </div>
             <div class="button-bg-color"></div>
           </div>
@@ -1842,7 +1996,7 @@
         font-weight: 700;
         letter-spacing: .06em;
         text-transform: uppercase;
-        color: var(--1-main-colors--primary, #08AC4B);
+        color: var(--1-main-colors--primary, #1fa35b);
         margin-bottom: 10px;
       }
 
@@ -1937,7 +2091,7 @@
       #home-blog-section .blog-card:hover {
        
         box-shadow: 0 14px 32px rgba(20, 20, 43, 0.09);
-        border-color: var(--1-main-colors--primary, #08AC4B);
+        border-color: var(--1-main-colors--primary, #1fa35b);
       }
 
       #home-blog-section .blog-image-wrapper {
@@ -2001,11 +2155,11 @@
       }
 
       #home-blog-section .blog-card:hover .blog-read-more {
-        color: var(--1-main-colors--primary, #08AC4B);
+        color: var(--1-main-colors--primary, #1fa35b);
       }
 
       #home-blog-section .blog-card:hover .blog-arrow-circle {
-        background: var(--1-main-colors--primary, #08AC4B);
+        background: var(--1-main-colors--primary, #1fa35b);
         transform: translateX(4px);
       }
 
@@ -2050,7 +2204,7 @@
           <div>
             <div class="sub-heading">OUR LATEST BLOGS</div>
             <h2 class="section-title">Latest Articles & <span
-                style="color: var(--1-main-colors--primary, #08AC4B);">Insights</span></h2>
+                style="color: var(--1-main-colors--primary, #1fa35b);">Insights</span></h2>
           </div>
           <div class="blog-arrows">
             <button type="button" class="blog-arrow" aria-label="Previous"
@@ -2083,11 +2237,11 @@
           <!-- Blog Card 1 -->
           <a href="#" class="blog-card">
             <div class="blog-image-wrapper">
-              <img src="assets/images/Complete_Guide_to_LED_Bulbs_Types_Benefits.webp"
+              <img src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661ededbd7cabf7e9d7f5a82_18683.webp"
                 alt="Home Audio Setup" class="blog-image" loading="lazy" />
             </div>
             <div class="blog-meta">Apr 3, 2026 – 5 min read</div>
-            <h3 class="blog-title">Complete Guide to LED Bulbs: Types, Benefits, and How to Choose the Right One</h3>
+            <h3 class="blog-title">Creating the Perfect Home Audio Setup on Any Budget</h3>
             <div class="blog-read-more primary-button w-inline-block">
               <div class="button-text-wrapper">
                 <div class="default-text">Read More</div>
@@ -2100,11 +2254,11 @@
           <!-- Blog Card 2 -->
           <a href="#" class="blog-card">
             <div class="blog-image-wrapper">
-              <img src="assets/images/lighting-ideas-to-transform-every-room.webp"
+              <img src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661edef384893931bdd7c82a_10109.webp"
                 alt="Smart Home Gadgets" class="blog-image" loading="lazy" />
             </div>
             <div class="blog-meta">Apr 3, 2026 – 5 min read</div>
-            <h3 class="blog-title">Make Your Spaces More Attractive with SuperTech Lights: A Symphony of Ambiance and Precision</h3>
+            <h3 class="blog-title">Top 5 Smart Home Gadgets You Need in 2026</h3>
             <div class="blog-read-more primary-button w-inline-block">
               <div class="button-text-wrapper">
                 <div class="default-text">Read More</div>
@@ -2117,11 +2271,11 @@
           <!-- Blog Card 3 -->
           <a href="#" class="blog-card">
             <div class="blog-image-wrapper">
-              <img src="assets/images/3rd Blog Banner.webp"
+              <img src="https://cdn.prod.website-files.com/66010b96fb3d1aa198478236/661edf1a18f1ca5cb40411b1_19129.webp"
                 alt="Gaming Setup" class="blog-image" loading="lazy" />
             </div>
             <div class="blog-meta">Apr 3, 2026 – 5 min read</div>
-            <h3 class="blog-title">Change the lighting in your soffit Enhance Ambiance and Security through Super Tech Lights Solutions</h3>
+            <h3 class="blog-title">How to Choose the Perfect Gaming Setup on Any Budget</h3>
             <div class="blog-read-more primary-button w-inline-block">
               <div class="button-text-wrapper">
                 <div class="default-text">Read More</div>
@@ -2280,16 +2434,16 @@
       }
 
       .locations-import .store__phone{
-        color: var(--1-main-colors--primary, #08AC4B);
+        color: var(--1-main-colors--primary, #1fa35b);
         text-decoration: none;
-        border-bottom: 1px solid var(--1-main-colors--primary, #08AC4B);
+        border-bottom: 1px solid var(--1-main-colors--primary, #1fa35b);
         padding-bottom: 2px;
         transition: opacity 0.2s ease, border-color 0.2s ease;
       }
 
       .locations-import .store__phone:hover{
         opacity: 0.7;
-        border-color: var(--1-main-colors--primary, #08AC4B);
+        border-color: var(--1-main-colors--primary, #1fa35b);
       }
 
       @media (max-width: 900px){
@@ -2385,7 +2539,7 @@
       }
 
       .footer .footer-links:hover {
-        color: var(--1-main-colors--primary, #08AC4B);
+        color: var(--1-main-colors--primary, #1fa35b);
       }
 
       .footer .newsletter-input {
@@ -2415,7 +2569,7 @@
       }
 
       .footer .footer-link:hover {
-        color: var(--1-main-colors--primary, #08AC4B);
+        color: var(--1-main-colors--primary, #1fa35b);
       }
     </style>
     <footer id="footer" class="footer">
@@ -2425,8 +2579,8 @@
             <div class="footer-block first-block"><a href="#" class="navbar-logo-wrapper w-nav-brand"><img
                   src="./assets/images/green white STL logo.png" loading="lazy" width="70" alt=""
                   class="site-logo" /></a>
-              <p class="footer-paragraph">At SuperTechLEDS, we are dedicated to providing you with the best in
-                LEDS Lighting. Explore our wide range of products, from Downlights to Controlers.</p>
+              <p class="footer-paragraph">At ElectronicZ, we&#x27;re dedicated to providing you with the best in
+                electronic innovation. Explore our wide range of products, from headphones to smart home devices.</p>
               <div class="w-layout-vflex vertical-15px-gap-left-align">
                 <div class="horizontal-block-10px-gap">
                   <div class="footer-icon">phone</div>
@@ -2434,7 +2588,7 @@
                 </div>
                 <div class="horizontal-block-10px-gap">
                   <div class="footer-icon">mail</div>
-                  <div class="footer-paragraph">NX@SuperTechLEDS.com</div>
+                  <div class="footer-paragraph">NX@Electronicz.com</div>
                 </div>
               </div>
             </div>
@@ -2492,23 +2646,23 @@
               <div class="list-block"><a href="#" data-w-id="4ac874fd-b9ba-07a3-646e-cfd1266af044"
                   class="footer-links w-inline-block">
                   <div class="title-divider-20px"></div>
-                  <div>UFO High Bays</div>
+                  <div>Headphones</div>
                 </a><a href="#" data-w-id="4ac874fd-b9ba-07a3-646e-cfd1266af044"
                   class="footer-links w-inline-block">
                   <div class="title-divider-20px"></div>
-                  <div>Downlights</div>
+                  <div>Cameras</div>
                 </a><a href="#" data-w-id="4ac874fd-b9ba-07a3-646e-cfd1266af044"
                   class="footer-links w-inline-block">
                   <div class="title-divider-20px"></div>
-                  <div>Linear High Bay</div>
+                  <div>Speakers</div>
                 </a><a href="#" data-w-id="4ac874fd-b9ba-07a3-646e-cfd1266af044"
                   class="footer-links w-inline-block">
                   <div class="title-divider-20px"></div>
-                  <div>Controlers</div>
+                  <div>Smart Watches</div>
                 </a><a href="#" data-w-id="4ac874fd-b9ba-07a3-646e-cfd1266af044"
                   class="footer-links w-inline-block">
                   <div class="title-divider-20px"></div>
-                  <div>Exit Signs</div>
+                  <div>Laptops</div>
                 </a></div>
             </div>
           </div>

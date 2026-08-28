@@ -249,7 +249,7 @@ html.w-mod-touch * {
     color: #fff;
     line-height: inherit;
     cursor: pointer;
-    background-color: #08AC4B;
+    background-color: #1fa35b;
     border: 0;
     border-radius: 0;
     padding: 9px 15px;
@@ -496,7 +496,7 @@ label {
 }
 .w-input:focus,
 .w-select:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline: 0;
 }
 .w-input[disabled],
@@ -1239,7 +1239,7 @@ textarea.w-select {
     display: block;
 }
 .w-dropdown-link.w--current {
-    color: #08AC4B;
+    color: #1fa35b;
 }
 .w-dropdown-link:focus {
     outline: 0;
@@ -1637,7 +1637,7 @@ textarea.w-select {
     position: relative;
 }
 .w-nav-link.w--current {
-    color: #08AC4B;
+    color: #1fa35b;
 }
 .w-nav-menu {
     float: right;
@@ -1827,7 +1827,7 @@ textarea.w-select {
 :root {
     --1-main-colors--heading: #0E314D;
     --1-main-colors--paragraph: #848484;
-    --1-main-colors--primary: #08AC4B;
+    --1-main-colors--primary: #1fa35b;
     --extra--white\<deleted\|variable-cd2144b0-f38c-41be-827e-ad9ce9a95ba1\>: #fff;
     --1-main-colors--transparent: #fff0;
     --1-main-colors--border: #e7eaee;
@@ -1840,7 +1840,7 @@ textarea.w-select {
     --5-radius--border-lg: 20px;
     --3-secondary--secondary-400\<deleted\|variable-890b7e4b-d05f-c075-f587-c10df640e97d\>: #3d5779;
     --5-radius--border: 10px;
-    --1-main-colors--box-shadow: #08AC4B1a;
+    --1-main-colors--box-shadow: #1fa35b1a;
     --3-tertiary-background--tertiary\<deleted\|variable-38562641-47d9-90dd-938c-fb904ea6bdf7\>: #fdbf60;
     --extra--transparent\<deleted\|variable-6ba1ba5c-4717-30e2-8629-2c5201d8399c\>: #0000;
     --3-secondary--heading\<deleted\|variable-66fdd590-ab2d-7577-84f1-7e9c2cd81582\>: var(
@@ -1903,7 +1903,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commerceaddtocartquantityinput:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commerceaddtocartbutton {
@@ -1911,7 +1911,7 @@ textarea.w-select {
     cursor: pointer;
     -webkit-appearance: none;
     appearance: none;
-    background-color: #08AC4B;
+    background-color: #1fa35b;
     border-width: 0;
     border-radius: 0;
     align-items: center;
@@ -1931,7 +1931,7 @@ textarea.w-select {
     cursor: pointer;
     -webkit-appearance: none;
     appearance: none;
-    background-color: #08AC4B;
+    background-color: #1fa35b;
     border-width: 0;
     border-radius: 0;
     align-items: center;
@@ -1984,7 +1984,7 @@ textarea.w-select {
     cursor: pointer;
     -webkit-appearance: none;
     appearance: none;
-    background-color: #08AC4B;
+    background-color: #1fa35b;
     border-width: 0;
     border-radius: 0;
     align-items: center;
@@ -1993,7 +1993,7 @@ textarea.w-select {
     display: flex;
 }
 .w-commerce-commercecartopenlinkcount {
-    color: #08AC4B;
+    color: #1fa35b;
     text-align: center;
     background-color: #fff;
     border-radius: 9px;
@@ -2130,7 +2130,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecartquantity:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecartfooter {
@@ -2198,7 +2198,7 @@ textarea.w-select {
     -webkit-appearance: none;
     appearance: none;
     text-align: center;
-    background-color: #08AC4B;
+    background-color: #1fa35b;
     border-width: 0;
     border-radius: 2px;
     align-items: center;
@@ -2281,7 +2281,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutemailinput:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutshippingaddresswrapper {
@@ -2304,7 +2304,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutshippingfullname:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutshippingstreetaddress {
@@ -2324,7 +2324,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutshippingstreetaddress:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutshippingstreetaddressoptional {
@@ -2344,7 +2344,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutshippingstreetaddressoptional:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutshippingcity {
@@ -2364,7 +2364,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutshippingcity:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutshippingstateprovince {
@@ -2384,7 +2384,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutshippingstateprovince:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutshippingzippostalcode {
@@ -2404,7 +2404,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutshippingzippostalcode:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutshippingcountryselector {
@@ -2424,7 +2424,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutshippingcountryselector:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutshippingmethodswrapper {
@@ -2483,7 +2483,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutbillingfullname:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutbillingstreetaddress {
@@ -2503,7 +2503,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutbillingstreetaddress:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutbillingstreetaddressoptional {
@@ -2523,7 +2523,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutbillingstreetaddressoptional:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutrow {
@@ -2553,7 +2553,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutbillingcity:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutbillingstateprovince {
@@ -2573,7 +2573,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutbillingstateprovince:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutbillingzippostalcode {
@@ -2593,7 +2593,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutbillingzippostalcode:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutbillingcountryselector {
@@ -2613,7 +2613,7 @@ textarea.w-select {
     color: #999;
 }
 .w-commerce-commercecheckoutbillingcountryselector:focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercelayoutsidebar {
@@ -2689,7 +2689,7 @@ textarea.w-select {
 }
 .w-commerce-commercecheckoutcardnumber:focus,
 .w-commerce-commercecheckoutcardnumber.-wfp-focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutcardexpirationdate {
@@ -2711,7 +2711,7 @@ textarea.w-select {
 }
 .w-commerce-commercecheckoutcardexpirationdate:focus,
 .w-commerce-commercecheckoutcardexpirationdate.-wfp-focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutcardsecuritycode {
@@ -2733,7 +2733,7 @@ textarea.w-select {
 }
 .w-commerce-commercecheckoutcardsecuritycode:focus,
 .w-commerce-commercecheckoutcardsecuritycode.-wfp-focus {
-    border-color: #08AC4B;
+    border-color: #1fa35b;
     outline-style: none;
 }
 .w-commerce-commercecheckoutbillingaddresstogglewrapper {
@@ -2753,7 +2753,7 @@ textarea.w-select {
     -webkit-appearance: none;
     appearance: none;
     text-align: center;
-    background-color: #08AC4B;
+    background-color: #1fa35b;
     border-width: 0;
     border-radius: 3px;
     align-items: center;
@@ -2934,15 +2934,15 @@ textarea.w-select {
     height: 12px;
 }
 .w-checkbox-input--inputType-custom.w--redirected-checked {
-    background-color: #08AC4B;
+    background-color: #1fa35b;
     background-image: url(https://d3e54v103j8qbb.cloudfront.net/static/custom-checkbox-checkmark.589d534424.svg);
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
-    border-color: #08AC4B;
+    border-color: #1fa35b;
 }
 .w-checkbox-input--inputType-custom.w--redirected-focus {
-    box-shadow: 0 0 3px 1px #08AC4B;
+    box-shadow: 0 0 3px 1px #1fa35b;
 }
 .w-users-useraccountformsavebutton {
     text-align: center;
@@ -2973,7 +2973,7 @@ textarea.w-select {
     display: flex;
 }
 .w-users-useraccountsubscriptioncancelbutton {
-    color: #08AC4B;
+    color: #1fa35b;
     cursor: pointer;
     -webkit-appearance: none;
     appearance: none;
@@ -4580,6 +4580,9 @@ figure {
 }
 .hover-text {
     color: var(--1-main-colors--primary);
+}
+.hover-text.white {
+    color: var(--1-main-colors--white);
 }
 ._30px-title {
     margin-top: 0;
@@ -9176,7 +9179,7 @@ body.search-modal-open {
     position: absolute;
     bottom: 6px;
     right: 6px;
-    background: #08AC4B;
+    background: #1fa35b;
     color: #fff;
     font-size: 9px;
     font-weight: 700;
@@ -9204,7 +9207,7 @@ body.search-modal-open {
     gap: 8px;
 }
 .site-search-price-now {
-    color: #08AC4B;
+    color: #1fa35b;
     font-weight: 700;
     font-size: 13px;
 }
@@ -9589,7 +9592,7 @@ body,
     max-width: 100% !important;
     max-height: 100% !important;
     object-fit: contain !important;
-    padding: 16px !important;
+    padding: 0px !important;
     box-sizing: border-box !important;
 }
 
@@ -9638,7 +9641,7 @@ body,
 
 .proudct-gallery-link.w--current,
 .proudct-gallery-link:hover {
-    border-color: var(--1-main-colors--primary, #08AC4B) !important;
+    border-color: var(--1-main-colors--primary, #1fa35b) !important;
     box-shadow: 0 2px 8px rgba(31, 163, 91, 0.2) !important;
 }
 
@@ -9676,7 +9679,7 @@ body,
 
 .main-img-nav-btn:hover {
     background: #ffffff !important;
-    color: #08AC4B !important;
+    color: #1fa35b !important;
     transform: translateY(-50%) scale(1.12) !important;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
 }
@@ -9709,7 +9712,7 @@ body,
     gap: 10px !important;
     width: 100% !important;
     padding: 14px 28px !important;
-    background-color: var(--1-main-colors--primary, #08AC4B) !important;
+    background-color: var(--1-main-colors--primary, #1fa35b) !important;
     color: #ffffff !important;
     font-size: 16px !important;
     font-weight: 600 !important;
