@@ -642,26 +642,53 @@
       margin-left: 8px;
     }
 
-    .mobile-nav-list-icons {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .mobile-nav-accordion-chevron {
+      transition: transform .25s ease;
+    }
+
+    .mobile-nav-accordion-toggle.is-open .mobile-nav-accordion-chevron {
+      transform: rotate(90deg);
+      color: var(--1-main-colors--primary, #1fa35b);
+    }
+
+    .mobile-nav-shopby-inline {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .mobile-nav-accordion-toggle.is-open + .mobile-nav-shopby-inline {
+      max-height: 170px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mobile-nav-shopby-scroll {
+      display: flex;
       gap: 12px;
-      padding: 4px 20px 20px;
+      padding: 14px 20px 18px;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
     }
 
-    .mobile-nav-list-icons .mobile-nav-item {
-      border-bottom: none;
-      padding: 0;
+    .mobile-nav-shopby-scroll::-webkit-scrollbar {
+      height: 4px;
     }
 
-    .mobile-nav-list-icons .mobile-nav-item a {
+    .mobile-nav-shopby-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+
+    .mobile-nav-shopby-item {
+      flex: 0 0 38%;
+      scroll-snap-align: start;
+      aspect-ratio: 1 / 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      width: 100%;
-      aspect-ratio: 1 / 1;
       padding: 14px 8px;
       border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 14px;
@@ -669,18 +696,27 @@
       text-align: center;
       font-size: 12.5px;
       letter-spacing: 0.02em;
+      color: #ffffff;
+      text-decoration: none;
       transition: border-color .2s ease, background .2s ease;
     }
 
-    .mobile-nav-list-icons .mobile-nav-item a:hover {
+    .mobile-nav-shopby-item:hover {
       border-color: var(--1-main-colors--primary, #1fa35b);
       background: rgba(31, 163, 91, 0.08);
     }
 
+    .mobile-nav-shopby-viewall {
+      border-style: dashed;
+      color: var(--1-main-colors--primary, #1fa35b);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
     .mobile-nav-item-icon {
       flex: 0 0 auto;
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -691,16 +727,6 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-    }
-
-    .mobile-nav-list-icons li:last-child a.mobile-nav-viewall {
-      grid-column: 1 / -1;
-      aspect-ratio: auto;
-      flex-direction: row;
-      border-style: dashed;
-      color: var(--1-main-colors--primary, #1fa35b);
-      font-weight: 800;
-      text-transform: uppercase;
     }
 
     #webflow-badge,
@@ -882,8 +908,25 @@
             <div class="mobile-nav-panels">
               <div class="mobile-nav-panel is-active" data-panel="root">
                 <ul class="mobile-nav-list">
-                  <li class="mobile-nav-item has-children" data-target="shopby"><span
-                      class="mobile-nav-label">Shop By</span><span class="mobile-nav-chevron">&#8250;</span></li>
+                  <li class="mobile-nav-item mobile-nav-accordion-toggle has-children" data-accordion="shopby"><span
+                      class="mobile-nav-label">Shop By</span><span class="mobile-nav-chevron mobile-nav-accordion-chevron">&#8250;</span></li>
+                  <li class="mobile-nav-shopby-inline" id="mobileShopbyInline">
+                    <div class="mobile-nav-shopby-scroll">
+                      <a href="#" class="mobile-nav-shopby-item"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/6614349f0ed8a6dbf1dde666_dslr-camera.png" alt="" /></span>Camera</a>
+                      <a href="#" class="mobile-nav-shopby-item"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/661437d4d459ad2cdcebc958_cctv.png" alt="" /></span>CCTV</a>
+                      <a href="#" class="mobile-nav-shopby-item"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/66143467a42283daa2ac942b_earbuds.png" alt="" /></span>Earbuds</a>
+                      <a href="#" class="mobile-nav-shopby-item"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/661434de4c27867d46b2ec38_headphones.png" alt="" /></span>Headphone</a>
+                      <a href="#" class="mobile-nav-shopby-item"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/661434f2e6bf600979311531_console.png" alt="" /></span>Joystick</a>
+                      <a href="#" class="mobile-nav-shopby-item"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/66143472af87772600fe5a97_Keyboard.png" alt="" /></span>Keyboard</a>
+                      <a href="#" class="mobile-nav-shopby-item"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/661434beb69c6e6b13af52f3_laptop.png" alt="" /></span>Laptop</a>
+                      <a href="#" class="mobile-nav-shopby-item"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/6614349112dafb3af985299f_monitor.png" alt="" /></span>Monitor</a>
+                      <a href="#" class="mobile-nav-shopby-item"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/6614347fd3e01ad1a958a430_mouse.png" alt="" /></span>Mouse</a>
+                      <a href="#" class="mobile-nav-shopby-item"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/661434ae435852d2fff3f421_mobile-phone.png" alt="" /></span>Phone</a>
+                      <a href="#" class="mobile-nav-shopby-item"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/661433876180b56f03c2bd9c_speaker.png" alt="" /></span>Speaker</a>
+                      <a href="#" class="mobile-nav-shopby-item"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/661434cd6180b56f03c3f655_smart-watch.png" alt="" /></span>Watch</a>
+                      <a href="#" class="mobile-nav-shopby-item mobile-nav-shopby-viewall">View<br>All</a>
+                    </div>
+                  </li>
                   <li class="mobile-nav-item"><a href="#">Home</a></li>
                   <li class="mobile-nav-item"><a href="#">About Us</a></li>
                   <li class="mobile-nav-item"><a href="#">Shop</a></li>
@@ -891,25 +934,6 @@
                   <li class="mobile-nav-item"><a href="#">Contact</a></li>
                   <li class="mobile-nav-item has-children" data-target="pages"><span
                       class="mobile-nav-label">Pages</span><span class="mobile-nav-chevron">&#8250;</span></li>
-                </ul>
-              </div>
-              <div class="mobile-nav-panel" data-panel="shopby">
-                <div class="mobile-nav-panel-header"><button type="button" class="mobile-nav-back"
-                    data-back>&#8249; Back</button></div>
-                <ul class="mobile-nav-list mobile-nav-list-icons">
-                  <li class="mobile-nav-item"><a href="#"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/6614349f0ed8a6dbf1dde666_dslr-camera.png" alt="" /></span>Camera</a></li>
-                  <li class="mobile-nav-item"><a href="#"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/661437d4d459ad2cdcebc958_cctv.png" alt="" /></span>CCTV</a></li>
-                  <li class="mobile-nav-item"><a href="#"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/66143467a42283daa2ac942b_earbuds.png" alt="" /></span>Earbuds</a></li>
-                  <li class="mobile-nav-item"><a href="#"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/661434de4c27867d46b2ec38_headphones.png" alt="" /></span>Headphone</a></li>
-                  <li class="mobile-nav-item"><a href="#"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/661434f2e6bf600979311531_console.png" alt="" /></span>Joystick</a></li>
-                  <li class="mobile-nav-item"><a href="#"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/66143472af87772600fe5a97_Keyboard.png" alt="" /></span>Keyboard</a></li>
-                  <li class="mobile-nav-item"><a href="#"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/661434beb69c6e6b13af52f3_laptop.png" alt="" /></span>Laptop</a></li>
-                  <li class="mobile-nav-item"><a href="#"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/6614349112dafb3af985299f_monitor.png" alt="" /></span>Monitor</a></li>
-                  <li class="mobile-nav-item"><a href="#"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/6614347fd3e01ad1a958a430_mouse.png" alt="" /></span>Mouse</a></li>
-                  <li class="mobile-nav-item"><a href="#"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/661434ae435852d2fff3f421_mobile-phone.png" alt="" /></span>Phone</a></li>
-                  <li class="mobile-nav-item"><a href="#"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/661433876180b56f03c2bd9c_speaker.png" alt="" /></span>Speaker</a></li>
-                  <li class="mobile-nav-item"><a href="#"><span class="mobile-nav-item-icon"><img loading="lazy" src="assets/images/661434cd6180b56f03c3f655_smart-watch.png" alt="" /></span>Watch</a></li>
-                  <li class="mobile-nav-item"><a href="#" class="mobile-nav-viewall">View All</a></li>
                 </ul>
               </div>
               <div class="mobile-nav-panel" data-panel="pages">
@@ -937,6 +961,9 @@
               function resetPanels() {
                 drawer.querySelectorAll('.mobile-nav-panel').forEach(function (p) {
                   p.classList.remove('is-active', 'is-leaving-left');
+                });
+                drawer.querySelectorAll('[data-accordion].is-open').forEach(function (t) {
+                  t.classList.remove('is-open');
                 });
               }
 
@@ -987,6 +1014,12 @@
 
               drawer.querySelectorAll('[data-back]').forEach(function (b) {
                 b.addEventListener('click', goToRoot);
+              });
+
+              drawer.querySelectorAll('[data-accordion]').forEach(function (toggle) {
+                toggle.addEventListener('click', function () {
+                  toggle.classList.toggle('is-open');
+                });
               });
             });
           </script>
