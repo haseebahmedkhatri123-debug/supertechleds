@@ -121,7 +121,7 @@ html, body, .page-wrapper, .section, .container, ._2-column-container {
 <button type="button" class="main-img-nav-btn next-btn" aria-label="Next image">&#8250;</button><div data-w-tab="Tab 1" class="w-tab-pane w--tab-active"><a href="#" data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22media%22%7D%5D" class="product-image-background w-inline-block w-lightbox"><img data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D" loading="lazy" alt="" src="./assets/images/SuperTechLights-500W-Shoebox-Area-Light-01.webp" sizes="(max-width: 479px) 100vw, (max-width: 991px) 95vw, 44vw" srcset="./assets/images/SuperTechLights-500W-Shoebox-Area-Light-01.webp" class="product-image contain"/><div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3Acompare-at-price%22%3A%7B%22exists%22%3A%22yes%22%2C%22type%22%3A%22CommercePrice%22%7D%7D%7D%2C%22timezone%22%3A%22Asia%2FDhaka%22%7D" class="sale-tag w-condition-invisible">On Sale</div><script type="application/json" class="w-json">{
   "items": [
     {
-      "url": "./assets/images/SuperTechLights-500W-Shoebox-Area-Light-01.webp",
+      "url": "./assets/images/product-image-02",
       "type": "image"
     }
   ],
@@ -667,27 +667,10 @@ html, body, .page-wrapper, .section, .container, ._2-column-container {
   margin: 0;
 }
 
-#related-products-section .filter-tabs {
+#related-products-section .section-header-right {
   display: flex;
-  gap: 20px;
   align-items: center;
-}
-
-#related-products-section .filter-tab {
-  font-size: 14px;
-  font-weight: 700;
-  color: #7e84a3;
-  cursor: pointer;
-  padding-bottom: 4px;
-  border-bottom: 2px solid transparent;
-  transition: all 0.25s ease;
-  text-decoration: none;
-}
-
-#related-products-section .filter-tab.active,
-#related-products-section .filter-tab:hover {
-  color: #14142b;
-  border-bottom-color: #14142b;
+  gap: 28px;
 }
 
 #related-products-section .rel-track {
@@ -710,23 +693,9 @@ html, body, .page-wrapper, .section, .container, ._2-column-container {
   min-width: calc((100% - 80px) / 5);
   max-width: calc((100% - 80px) / 5);
   scroll-snap-align: start;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 16px;
-  border: 1px solid #eaecef;
-  box-shadow: 0 4px 16px rgba(20, 20, 43, 0.04);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
   box-sizing: border-box;
+  text-decoration: none;
   position: relative;
-}
-
-#related-products-section .rel-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(20, 20, 43, 0.08);
-  border-color: #08AC4B;
 }
 
 #related-products-section .rel-badge {
@@ -734,7 +703,7 @@ html, body, .page-wrapper, .section, .container, ._2-column-container {
   top: 14px;
   left: 14px;
   z-index: 2;
-  background: #08AC4B;
+  background: var(--1-main-colors--primary, #08AC4B);
   color: #ffffff;
   font-size: 11px;
   font-weight: 800;
@@ -743,56 +712,46 @@ html, body, .page-wrapper, .section, .container, ._2-column-container {
   line-height: 1;
 }
 
-#related-products-section .rel-image-box {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #fafbfc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-  box-sizing: border-box;
-  margin-bottom: 14px;
-}
-
-#related-products-section .rel-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  transition: transform 0.35s ease;
-}
-
-#related-products-section .rel-card:hover .rel-image {
-  transform: scale(1.06);
-}
-
-#related-products-section .rel-card-title {
-  font-size: 15px;
+#related-products-section .rel-sku {
+  font-size: 11px;
   font-weight: 700;
-  color: #14142b;
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  letter-spacing: 0.04em;
+  color: #9a9eb3;
+  text-transform: uppercase;
+  margin-bottom: 4px;
 }
 
-#related-products-section .bottom-nav-bar {
-  margin-top: 24px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  position: relative;
+#related-products-section .product-thumbnail-wrapper {
+  position: relative !important;
 }
 
-#related-products-section .progress-line-track {
-  flex: 1;
-  height: 2px;
-  background: #14142b;
-  border-radius: 2px;
-  position: relative;
+#related-products-section .rel-card .product-thumbnail-wrapper img.product-thumbnail,
+#related-products-section .rel-card .product-thumbnail-wrapper img.show-on-hover {
+  transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), transform 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
+
+#related-products-section .rel-card .product-thumbnail-wrapper img.product-thumbnail {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+#related-products-section .rel-card .product-thumbnail-wrapper img.show-on-hover {
+  position: absolute !important;
+  inset: 0 !important;
+  opacity: 0 !important;
+  transform: scale(1.08) !important;
+}
+
+#related-products-section .rel-card:hover .product-thumbnail-wrapper img.product-thumbnail {
+  opacity: 0 !important;
+  transform: scale(0.95) !important;
+}
+
+#related-products-section .rel-card:hover .product-thumbnail-wrapper img.show-on-hover {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
 
 #related-products-section .rel-arrows {
   display: flex;
@@ -825,6 +784,17 @@ html, body, .page-wrapper, .section, .container, ._2-column-container {
 #related-products-section .rel-arrow svg {
   width: 16px;
   height: 16px;
+}
+
+@media screen and (max-width: 560px) {
+  #related-products-section .section-header {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  #related-products-section .section-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
 @media screen and (max-width: 1200px) {
@@ -861,88 +831,102 @@ html, body, .page-wrapper, .section, .container, ._2-column-container {
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Related Products</h2>
-      <div class="filter-tabs">
-        <span class="filter-tab active">Trending Now</span>
-        <span class="filter-tab">New Arrivals</span>
+      <div class="section-header-right">
+        <div class="rel-arrows">
+          <button type="button" class="rel-arrow" aria-label="Previous" onclick="(function(){var t=document.getElementById('rel-products-track');var c=t.querySelector('.rel-card');var step=c?c.getBoundingClientRect().width+20:280;t.scrollBy({left:-step,behavior:'smooth'});})()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button type="button" class="rel-arrow" aria-label="Next" onclick="(function(){var t=document.getElementById('rel-products-track');var c=t.querySelector('.rel-card');var step=c?c.getBoundingClientRect().width+20:280;t.scrollBy({left:step,behavior:'smooth'});})()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
       </div>
     </div>
 
     <div class="rel-track" id="rel-products-track">
       <!-- Card 1 -->
-      <a href="#" class="rel-card">
+      <a href="#" class="rel-card product-card">
         <span class="rel-badge">New</span>
-        <div class="rel-image-box">
-          <img src="assets/images/661433876180b56f03c2bd9c_speaker.png" alt="Bluetooth Speaker" class="rel-image" loading="lazy" />
+        <div class="product-thumbnail-wrapper">
+          <img src="assets/images/product-image-01.jpeg" alt="Bluetooth Speaker" class="product-thumbnail" loading="lazy" /><img src="assets/images/product-image-02.jpeg" alt="" class="show-on-hover" loading="lazy" />
         </div>
-        <h3 class="rel-card-title">Bluetooth Speaker</h3>
+        <div class="w-layout-vflex product-body">
+          <div class="rel-sku">SKU: NX-BTSPK01</div>
+          <div class="product-name-on-card">Bluetooth Speaker</div>
+        </div>
       </a>
 
       <!-- Card 2 -->
-      <a href="#" class="rel-card">
+      <a href="#" class="rel-card product-card">
         <span class="rel-badge">New</span>
-        <div class="rel-image-box">
-          <img src="assets/images/661434ae435852d2fff3f421_mobile-phone.png" alt="Android Phone" class="rel-image" loading="lazy" />
+        <div class="product-thumbnail-wrapper">
+          <img src="assets/images/product-image-02.jpeg" alt="Android Phone" class="product-thumbnail" loading="lazy" /><img src="assets/images/product-image-03.jpeg" alt="" class="show-on-hover" loading="lazy" />
         </div>
-        <h3 class="rel-card-title">Android Phone</h3>
+        <div class="w-layout-vflex product-body">
+          <div class="rel-sku">SKU: NX-ANDPH02</div>
+          <div class="product-name-on-card">Android Phone</div>
+        </div>
       </a>
 
       <!-- Card 3 -->
-      <a href="#" class="rel-card">
+      <a href="#" class="rel-card product-card">
         <span class="rel-badge">New</span>
-        <div class="rel-image-box">
-          <img src="assets/images/661434f2e6bf600979311531_console.png" alt="Gaming Joystick" class="rel-image" loading="lazy" />
+        <div class="product-thumbnail-wrapper">
+          <img src="assets/images/product-image-03.jpeg" alt="Gaming Joystick" class="product-thumbnail" loading="lazy" /><img src="assets/images/product-image.jpeg" alt="" class="show-on-hover" loading="lazy" />
         </div>
-        <h3 class="rel-card-title">Gaming Joystick</h3>
+        <div class="w-layout-vflex product-body">
+          <div class="rel-sku">SKU: NX-JOY03</div>
+          <div class="product-name-on-card">Gaming Joystick</div>
+        </div>
       </a>
 
       <!-- Card 4 -->
-      <a href="#" class="rel-card">
+      <a href="#" class="rel-card product-card">
         <span class="rel-badge">New</span>
-        <div class="rel-image-box">
-          <img src="assets/images/661437d4d459ad2cdcebc958_cctv.png" alt="NX - CCTV" class="rel-image" loading="lazy" />
+        <div class="product-thumbnail-wrapper">
+          <img src="assets/images/product-image.jpeg" alt="NX - CCTV" class="product-thumbnail" loading="lazy" /><img src="assets/images/product-image-01.jpeg" alt="" class="show-on-hover" loading="lazy" />
         </div>
-        <h3 class="rel-card-title">NX - CCTV</h3>
+        <div class="w-layout-vflex product-body">
+          <div class="rel-sku">SKU: NXCCTV10K8</div>
+          <div class="product-name-on-card">NX - CCTV</div>
+        </div>
       </a>
 
       <!-- Card 5 -->
-      <a href="#" class="rel-card">
+      <a href="#" class="rel-card product-card">
         <span class="rel-badge">New</span>
-        <div class="rel-image-box">
-          <img src="assets/images/661434de4c27867d46b2ec38_headphones.png" alt="RGB Headphone" class="rel-image" loading="lazy" />
+        <div class="product-thumbnail-wrapper">
+          <img src="assets/images/product-image-01.jpeg" alt="RGB Headphone" class="product-thumbnail" loading="lazy" /><img src="assets/images/product-image-02.jpeg" alt="" class="show-on-hover" loading="lazy" />
         </div>
-        <h3 class="rel-card-title">RGB Headphone</h3>
+        <div class="w-layout-vflex product-body">
+          <div class="rel-sku">SKU: NX-HDPH05</div>
+          <div class="product-name-on-card">RGB Headphone</div>
+        </div>
       </a>
 
       <!-- Card 6 -->
-      <a href="#" class="rel-card">
+      <a href="#" class="rel-card product-card">
         <span class="rel-badge">New</span>
-        <div class="rel-image-box">
-          <img src="assets/images/66143472af87772600fe5a97_Keyboard.png" alt="Gaming Keyboard" class="rel-image" loading="lazy" />
+        <div class="product-thumbnail-wrapper">
+          <img src="assets/images/product-image-02.jpeg" alt="Gaming Keyboard" class="product-thumbnail" loading="lazy" /><img src="assets/images/product-image-03.jpeg" alt="" class="show-on-hover" loading="lazy" />
         </div>
-        <h3 class="rel-card-title">Gaming Keyboard</h3>
+        <div class="w-layout-vflex product-body">
+          <div class="rel-sku">SKU: NX-KBD06</div>
+          <div class="product-name-on-card">Gaming Keyboard</div>
+        </div>
       </a>
 
       <!-- Card 7 -->
-      <a href="#" class="rel-card">
+      <a href="#" class="rel-card product-card">
         <span class="rel-badge">New</span>
-        <div class="rel-image-box">
-          <img src="assets/images/66143467a42283daa2ac942b_earbuds.png" alt="NX Airbuds" class="rel-image" loading="lazy" />
+        <div class="product-thumbnail-wrapper">
+          <img src="assets/images/product-image-03.jpeg" alt="NX Airbuds" class="product-thumbnail" loading="lazy" /><img src="assets/images/product-image.jpeg" alt="" class="show-on-hover" loading="lazy" />
         </div>
-        <h3 class="rel-card-title">NX Airbuds</h3>
+        <div class="w-layout-vflex product-body">
+          <div class="rel-sku">SKU: NX-EAR07</div>
+          <div class="product-name-on-card">NX Airbuds</div>
+        </div>
       </a>
-    </div>
-
-    <!-- Bottom Navigation Bar with Progress Line and Arrow Buttons -->
-    <div class="bottom-nav-bar">
-      <div class="progress-line-track"></div>
-      <div class="rel-arrows">
-        <button type="button" class="rel-arrow" aria-label="Previous" onclick="(function(){var t=document.getElementById('rel-products-track');var c=t.querySelector('.rel-card');var step=c?c.getBoundingClientRect().width+20:280;t.scrollBy({left:-step,behavior:'smooth'});})()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        </button>
-        <button type="button" class="rel-arrow" aria-label="Next" onclick="(function(){var t=document.getElementById('rel-products-track');var c=t.querySelector('.rel-card');var step=c?c.getBoundingClientRect().width+20:280;t.scrollBy({left:step,behavior:'smooth'});})()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        </button>
-      </div>
     </div>
   </div>
 </section>

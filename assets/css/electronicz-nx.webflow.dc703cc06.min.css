@@ -3986,10 +3986,6 @@ figure {
     position: relative;
     overflow: hidden;
 }
-.product-thumbnail {
-    object-fit: contain;
-    height: 100%;
-}
 .product-body {
     grid-column-gap: 10px;
     grid-row-gap: 10px;
@@ -4554,7 +4550,7 @@ figure {
 .primary-button {
     grid-column-gap: 20px;
     grid-row-gap: 20px;
-    border: 2px solid var(--1-main-colors--primary);
+    border: 2px solid var(--1-main-colors--primary) !important;
     border-radius: var(--5-radius--border-sm);
     background-color: var(--1-main-colors--transparent);
     color: #fff;
@@ -4581,9 +4577,7 @@ figure {
 .hover-text {
     color: var(--1-main-colors--primary);
 }
-.hover-text.white {
-    color: var(--1-main-colors--white);
-}
+
 ._30px-title {
     margin-top: 0;
     margin-bottom: 0;
